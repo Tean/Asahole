@@ -15,20 +15,69 @@
     </profiles>
 
     <properties>
-        <spring.boot.starter.version>2.0.1.RELEASE</spring.boot.starter.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+
+        <spring.boot.starter.web.version>2.0.1.RELEASE</spring.boot.starter.web.version>
+        <spring.boot.test.version>2.0.1.RELEASE</spring.boot.test.version>
+        <spring.test.version>5.0.5.RELEASE</spring.test.version>
+
+        <service.controller.version>1.0-SNAPSHOT</service.controller.version>
+        <log.module.version>1.0-SNAPSHOT</log.module.version>
+        <test.module.version>1.0-SNAPSHOT</test.module.version>
     </properties>
 
     <dependencies>
+        <!-- scope:compile -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring.boot.starter.version}</version>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.starter.web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-dependencies</artifactId>
+            <version>2.0.1.RELEASE</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>netteans</groupId>
+            <artifactId>service_controller</artifactId>
+            <version>${service.controller.version}</version>
         </dependency>
 
         <dependency>
             <groupId>netteans</groupId>
             <artifactId>log_module</artifactId>
-            <version>${project.version}</version>
+            <version>${log.module.version}</version>
+        </dependency>
+
+        <!-- scope:test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>${spring.boot.test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>netteans</groupId>
+            <artifactId>test_module</artifactId>
+            <version>${test.module.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
