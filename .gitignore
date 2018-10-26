@@ -1,0 +1,10 @@
+
+asahole.ipr
+asahole.iws
+*.iml
+
+*/target/
+*/log/
+*/logs/
+src/test/java/com/netteans/service/
+tmp/
