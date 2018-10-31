@@ -10,6 +10,7 @@ public class ServiceImpl implements IService {
         DemoUser user = new DemoUser();
         user.setName(String.format("{id:%s}", id));
         user.setPassword("id demo");
+        user.setEmail("id@de.mo");
         return user;
     }
 
@@ -18,6 +19,7 @@ public class ServiceImpl implements IService {
         DemoUser user = new DemoUser();
         user.setName(String.format("{name:%s}", name));
         user.setPassword("name demo");
+        user.setEmail("name@de.mo");
         return user;
     }
 }

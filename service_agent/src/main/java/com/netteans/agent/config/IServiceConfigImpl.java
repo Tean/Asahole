@@ -1,6 +1,6 @@
 package com.netteans.agent.config;
 
-import com.netteans.config.IServiceConfig;
+import com.netteans.common.config.IServiceConfig;
 import org.springframework.stereotype.Component;
 
 /**
