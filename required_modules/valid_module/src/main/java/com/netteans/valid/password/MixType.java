@@ -1,4 +1,4 @@
-package com.netteans.valid;
+package com.netteans.valid.password;
 
 /**
  * Created by Tean on 2016/10/9.

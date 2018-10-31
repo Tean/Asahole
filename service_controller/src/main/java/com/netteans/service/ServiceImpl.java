@@ -8,7 +8,7 @@ public class ServiceImpl implements IService {
     @Override
     public DemoUser getById(int id) {
         DemoUser user = new DemoUser();
-        user.setName(String.format("{}", id));
+        user.setName(String.format("{id:%s}", id));
         user.setPassword("id demo");
         return user;
     }
@@ -16,7 +16,7 @@ public class ServiceImpl implements IService {
     @Override
     public DemoUser getByName(String name) {
         DemoUser user = new DemoUser();
-        user.setName(String.format("{}", name));
+        user.setName(String.format("{name:%s}", name));
         user.setPassword("name demo");
         return user;
     }

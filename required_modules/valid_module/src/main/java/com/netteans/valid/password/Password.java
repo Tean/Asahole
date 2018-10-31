@@ -1,4 +1,4 @@
-package com.netteans.valid;
+package com.netteans.valid.password;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Documented
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PasswordValid.class)
+@Constraint(validatedBy = PasswordValidatorContext.class)
 public @interface Password {
     int min() default 0;
 
@@ -21,6 +21,8 @@ public @interface Password {
     MixType mix() default MixType.NoMix;
 
     String message() default "密码校验";
+
+    Class<? extends IPasswordValidation> passwordValidator();
 
     Class<?>[] groups() default {};
 
