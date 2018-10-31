@@ -15,4 +15,4 @@ server:
 
 spring:
   messages:
-    basename: i18n/valid
+    basename: i18n.messages

@@ -1,4 +1,4 @@
-package com.netteans.domain;
+package com.netteans.backend.domain;
 
 import com.netteans.common.valid.password.IPasswordValidation;
 import com.netteans.common.valid.password.MixType;
@@ -13,13 +13,13 @@ import java.util.regex.Pattern;
  * Created by Tean on 2016/10/9.
  */
 public class DemoUser {
-    @NotBlank(message = "用户名不能为空")
+    @NotBlank
     private String name;
     @Password(
             min = 6,
             max = 20,
             mix = MixType.UpperLowerAndNumber,
-            message = "${valid.password.message}",
+            message = "{valid.password.message}",
             passwordValidator = PasswordValidator.class
     )
     private String password;

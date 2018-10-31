@@ -1,6 +1,6 @@
 package com.netteans.test;
 
-import com.netteans.controller.Controller;
+import com.netteans.backend.controller.Controller;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

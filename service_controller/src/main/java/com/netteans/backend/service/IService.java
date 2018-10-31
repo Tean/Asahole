@@ -1,6 +1,6 @@
-package com.netteans.service;
+package com.netteans.backend.service;
 
-import com.netteans.domain.DemoUser;
+import com.netteans.backend.domain.DemoUser;
 
 public interface IService {
 

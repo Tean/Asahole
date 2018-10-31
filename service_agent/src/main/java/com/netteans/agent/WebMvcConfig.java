@@ -24,7 +24,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         // 默认语言
-        slr.setDefaultLocale(Locale.US);
+        slr.setDefaultLocale(Locale.CHINESE);
         return slr;
     }
 
