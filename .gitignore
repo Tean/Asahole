@@ -1,6 +1,6 @@
-
-asahole.ipr
-asahole.iws
+.idea/
+*.ipr
+*.iws
 *.iml
 
 */target/
