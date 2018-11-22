@@ -24,7 +24,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
         // 默认语言
-        slr.setDefaultLocale(Locale.CHINESE);
+        slr.setDefaultLocale(Locale.US);
         return slr;
     }
 
@@ -40,19 +40,19 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
-
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        /* InternalResourceViewResolver 实现了ViewResolver接口
-         */
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        // 配置JSP的ViewResolver，映射路径和实际页面的位置。
-        // 可以从编译好的xxx-SNAPSHOT中看到此路径
-        viewResolver.setPrefix("/WEB-INF/classes/views/");
-        viewResolver.setSuffix(".jsp");
-        viewResolver.setViewClass(JstlView.class);
-        return viewResolver;
-    }
+//
+//    @Bean
+//    public InternalResourceViewResolver viewResolver() {
+//        /* InternalResourceViewResolver 实现了ViewResolver接口
+//         */
+//        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+//        // 配置JSP的ViewResolver，映射路径和实际页面的位置。
+//        // 可以从编译好的xxx-SNAPSHOT中看到此路径
+//        viewResolver.setPrefix("/WEB-INF/classes/views/");
+//        viewResolver.setSuffix(".jsp");
+//        viewResolver.setViewClass(JstlView.class);
+//        return viewResolver;
+//    }
 
     /**
      * 配置servlet处理

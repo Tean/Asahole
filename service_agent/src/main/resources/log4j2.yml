@@ -37,21 +37,9 @@ configuration:
       Filters:
         ThresholdFilter:
         -
-          level: "trace"
-          onMatch: "DENY"
-          onMismatch: "NEUTRAL"
-        -
-          level: "info"
-          onMatch: "DENY"
-          onMismatch: "NEUTRAL"
-        -
           level: "debug"
           onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
-        -
-          level: "error"
-          onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
+          onMismatch: "DENY"
       Policies:
         OnStartupTriggeringPolicy: {}
         SizeBasedTriggeringPolicy:
@@ -75,7 +63,7 @@ configuration:
           size: "4 MB"
         TimeBasedTriggeringPolicy: {}
     -
-      name: "historydebug"
+      name: "HistoryFile"
       filename: "logs/history/history.log"
       filepattern: "logs/history/$${date:yyyy-MM}/history.%d{yyyyMMdd}.-%i.gz"
       PatternLayout:
@@ -108,52 +96,42 @@ configuration:
         SizeBasedTriggeringPolicy:
           size: "4 MB"
         TimeBasedTriggeringPolicy: {}
-    NoSql:
-      name: "mongodb"
-      bufferSize: "10"
-      MongoDb:
-        databaseName: "logs"
-        collectionName: "test"
-        server: "localhost"
-        port: "27017"
-      Filters:
-        ThresholdFilter:
-        -
-          level: "info"
-          onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
-        -
-          level: "debug"
-          onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
-        -
-          level: "warn"
-          onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
-        -
-          level: "error"
-          onMatch: "ACCEPT"
-          onMismatch: "NEUTRAL"
+#    NoSql:
+#      name: "mongodb"
+#      bufferSize: "10"
+#      MongoDb:
+#        databaseName: "logs"
+#        collectionName: "test"
+#        server: "localhost"
+#        port: "27017"
+#      Filters:
+#        ThresholdFilter:
+#        -
+#          level: "info"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "debug"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "warn"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "error"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
   loggers:
     logger:
-    -
-      name: "console"
-      level: "info"
-      AppenderRef:
-        ref: "Console"
-    -
-      name: "error"
-      level: "error"
-      AppenderRef:
-        ref: "ErrorFile"
-    -
       name: "history"
-      level: "debug"
       AppenderRef:
       -
-        ref: "historydebug"
-      -
-        ref: "mongodb"
+        ref: "HistoryFile"
+#      -
+#        ref: "ErrorFile"
+#      -
+#        ref: "mongodb"
     root:
       level: "debug"
       AppenderRef:
