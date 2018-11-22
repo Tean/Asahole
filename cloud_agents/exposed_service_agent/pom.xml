@@ -9,24 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zookeeper_agent</artifactId>
+    <artifactId>exposed_service_agent</artifactId>
 
     <properties>
-        <zookeeper.module.version>1.0-SNAPSHOT</zookeeper.module.version>
-        <service.controller.version>1.0-SNAPSHOT</service.controller.version>
+        <feign.module.version>1.0-SNAPSHOT</feign.module.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.netteans</groupId>
-            <artifactId>zookeeper_module</artifactId>
-            <version>${zookeeper.module.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.netteans</groupId>
-            <artifactId>service_controller</artifactId>
-            <version>${service.controller.version}</version>
+            <artifactId>feign_module</artifactId>
+            <version>${feign.module.version}</version>
         </dependency>
     </dependencies>
+
 </project>
