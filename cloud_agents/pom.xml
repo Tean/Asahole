@@ -12,6 +12,7 @@
     <modules>
         <module>zookeeper_agent</module>
         <module>exposed_service_agent</module>
+        <module>zkui_agent</module>
     </modules>
 
 

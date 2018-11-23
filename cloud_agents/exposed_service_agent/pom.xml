@@ -13,6 +13,7 @@
 
     <properties>
         <feign.module.version>1.0-SNAPSHOT</feign.module.version>
+        <service.domain.version>1.0-SNAPSHOT</service.domain.version>
     </properties>
 
     <dependencies>
@@ -20,6 +21,11 @@
             <groupId>com.netteans</groupId>
             <artifactId>feign_module</artifactId>
             <version>${feign.module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netteans</groupId>
+            <artifactId>service_domain</artifactId>
+            <version>${service.domain.version}</version>
         </dependency>
     </dependencies>
 

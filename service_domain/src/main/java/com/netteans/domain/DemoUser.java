@@ -1,4 +1,4 @@
-package com.netteans.backend.domain;
+package com.netteans.domain;
 
 import com.netteans.common.valid.password.IPasswordValidation;
 import com.netteans.common.valid.password.MixType;
