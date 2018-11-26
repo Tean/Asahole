@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.netteans</groupId>
+    <groupId>com.netteans.cloud</groupId>
     <artifactId>cloud_modules</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -18,8 +18,9 @@
     </properties>
 
     <modules>
-        <module>zookeeper_module</module>
-        <module>feign_module</module>
+        <module>discovery_zookeeper_module</module>
+        <module>broker_feign_module</module>
+        <module>cloud_config_module</module>
     </modules>
 
     <dependencyManagement>

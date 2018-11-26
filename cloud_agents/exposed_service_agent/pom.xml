@@ -12,15 +12,15 @@
     <artifactId>exposed_service_agent</artifactId>
 
     <properties>
-        <feign.module.version>1.0-SNAPSHOT</feign.module.version>
+        <broker.feign.module.version>1.0-SNAPSHOT</broker.feign.module.version>
         <service.domain.version>1.0-SNAPSHOT</service.domain.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans</groupId>
-            <artifactId>feign_module</artifactId>
-            <version>${feign.module.version}</version>
+            <groupId>com.netteans.cloud</groupId>
+            <artifactId>broker_feign_module</artifactId>
+            <version>${broker.feign.module.version}</version>
         </dependency>
         <dependency>
             <groupId>com.netteans</groupId>

@@ -12,15 +12,15 @@
     <artifactId>zookeeper_agent</artifactId>
 
     <properties>
-        <zookeeper.module.version>1.0-SNAPSHOT</zookeeper.module.version>
+        <discovery.zookeeper.module.version>1.0-SNAPSHOT</discovery.zookeeper.module.version>
         <service.controller.version>1.0-SNAPSHOT</service.controller.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans</groupId>
-            <artifactId>zookeeper_module</artifactId>
-            <version>${zookeeper.module.version}</version>
+            <groupId>com.netteans.cloud</groupId>
+            <artifactId>discovery_zookeeper_module</artifactId>
+            <version>${discovery.zookeeper.module.version}</version>
         </dependency>
 
         <dependency>

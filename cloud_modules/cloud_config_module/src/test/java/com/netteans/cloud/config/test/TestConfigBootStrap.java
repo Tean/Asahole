@@ -1,4 +1,10 @@
 package com.netteans.cloud.config.test;
 
-public class TestConfig {
+import org.springframework.cloud.client.SpringCloudApplication;
+
+@SpringCloudApplication
+public class TestConfigBootStrap {
+    public static void main(String[] args) {
+
+    }
 }
