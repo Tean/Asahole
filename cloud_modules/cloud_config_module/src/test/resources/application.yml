@@ -1,9 +1,0 @@
-spring:
-  cloud:
-    config:
-      label: dev
-      name: config
-      profile: test
-      server:
-        git:
-          uri: https://github.com/Tean/Asahole/tree/master/remote_config_files

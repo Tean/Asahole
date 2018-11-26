@@ -1,0 +1,11 @@
+
+spring:
+  application:
+    name: explosed_service
+  profiles:
+    active: test
+  cloud:
+    config:
+      uri: http://localhost:8901/
+      label: master
+      profile: test

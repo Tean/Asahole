@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.common</groupId>
             <artifactId>valid_module</artifactId>
             <version>${valid.module.version}</version>
         </dependency>

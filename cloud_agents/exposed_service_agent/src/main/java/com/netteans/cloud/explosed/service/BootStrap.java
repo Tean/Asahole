@@ -5,15 +5,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+//@EnableDiscoveryClient
 @EnableFeignClients
 @SpringCloudApplication
 public class BootStrap {
     private static Logger logger = LoggerFactory.getLogger(BootStrap.class);
     private static String port;
 
-    @Value("${server.port}")
+//    @Value("${server.port}")
     private void setPort(String p) {
         port = p;
     }

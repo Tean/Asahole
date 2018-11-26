@@ -6,7 +6,6 @@
 
     <groupId>com.netteans</groupId>
     <artifactId>service_controller</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -28,12 +27,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.common</groupId>
             <artifactId>log_module</artifactId>
             <version>${log.module.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.common</groupId>
             <artifactId>config_module</artifactId>
             <version>${config.module.version}</version>
         </dependency>
@@ -45,7 +44,7 @@
 
         <!-- scope:test -->
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.common</groupId>
             <artifactId>test_module</artifactId>
             <version>${test.module.version}</version>
             <scope>test</scope>

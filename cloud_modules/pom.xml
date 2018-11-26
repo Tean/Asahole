@@ -20,7 +20,8 @@
     <modules>
         <module>discovery_zookeeper_module</module>
         <module>broker_feign_module</module>
-        <module>cloud_config_module</module>
+        <module>cloud_config_server_module</module>
+        <module>cloud_config_client_module</module>
     </modules>
 
     <dependencyManagement>

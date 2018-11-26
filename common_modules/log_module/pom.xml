@@ -7,7 +7,7 @@
     <artifactId>log_module</artifactId>
 
     <parent>
-        <groupId>com.netteans</groupId>
+        <groupId>com.netteans.common</groupId>
         <artifactId>common_modules</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -18,6 +18,7 @@
         <jackson.dataformat.yaml.version>2.9.7</jackson.dataformat.yaml.version>
         <jcl.over.slf4j.version>1.7.25</jcl.over.slf4j.version>
         <jul.to.slf4j.version>1.7.25</jul.to.slf4j.version>
+        <slf4j.jboss.logging.version>1.1.0.Final</slf4j.jboss.logging.version>
     </properties>
 
     <dependencies>
@@ -51,6 +52,11 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${log4j2.version}</version>
         </dependency>
+        <!--<dependency> &lt;!&ndash; slf4j 的 jboss 实现 &ndash;&gt;-->
+            <!--<groupId>org.jboss.slf4j</groupId>-->
+            <!--<artifactId>slf4j-jboss-logging</artifactId>-->
+            <!--<version>${slf4j.jboss.logging.version}</version>-->
+        <!--</dependency>-->
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>

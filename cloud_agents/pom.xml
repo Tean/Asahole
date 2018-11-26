@@ -13,6 +13,7 @@
         <module>zookeeper_agent</module>
         <module>exposed_service_agent</module>
         <module>zkui_agent</module>
+        <module>config_service_agent</module>
     </modules>
 
 
@@ -27,7 +28,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.netteans</groupId>
+                <groupId>com.netteans.cloud</groupId>
                 <artifactId>cloud_modules</artifactId>
                 <version>${cloud.modules.version}</version>
                 <type>pom</type>
@@ -38,7 +39,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.common</groupId>
             <artifactId>log_module</artifactId>
             <version>${log.module.version}</version>
         </dependency>

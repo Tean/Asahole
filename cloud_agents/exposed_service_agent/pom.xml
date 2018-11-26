@@ -14,6 +14,7 @@
     <properties>
         <broker.feign.module.version>1.0-SNAPSHOT</broker.feign.module.version>
         <service.domain.version>1.0-SNAPSHOT</service.domain.version>
+        <cloud.config.version>1.0-SNAPSHOT</cloud.config.version>
     </properties>
 
     <dependencies>
@@ -26,6 +27,11 @@
             <groupId>com.netteans</groupId>
             <artifactId>service_domain</artifactId>
             <version>${service.domain.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netteans.cloud</groupId>
+            <artifactId>cloud_config_client_module</artifactId>
+            <version>${cloud.config.version}</version>
         </dependency>
     </dependencies>
 
