@@ -15,7 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.File;
+import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @RestController
@@ -118,6 +120,15 @@ public class Controller {
             @RequestBody(required = false)
                     DemoUser user
     ) {
+    }
+
+    @RequestMapping(value = {"/timeout"})
+    @ApiOperation(value = "测试超时")
+    public Integer timeout(
+    ) throws InterruptedException {
+        int i = new Random().nextInt();
+        TimeUnit.SECONDS.sleep(30);
+        return i;
     }
 }
 

@@ -1,8 +1,11 @@
 package com.netteans.cloud.explosed.service;
 
+import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -60,4 +63,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
             DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
+//    @Bean
+//    public ServletRegistrationBean getServlet() {
+//        HystrixMetricsStreamServlet servlet = new HystrixMetricsStreamServlet();
+//        ServletRegistrationBean registrationBean = new ServletRegistrationBean(servlet);
+//        registrationBean.setLoadOnStartup(1);
+//        registrationBean.addUrlMappings("/hystrix.stream");
+//        registrationBean.setName("HystrixMetricsStreamServlet");
+//        return registrationBean;
+//    }
 }

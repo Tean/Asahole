@@ -22,13 +22,17 @@ public class FeignConotroller {
     private String version;
 
     @RequestMapping(value = {"/get/{id}", "/get"}, method = {RequestMethod.GET, RequestMethod.DELETE})
-    public DemoUser remoteInstance(@PathVariable Integer id) {
-        DemoUser du = remoteService.inst(id);
-        return du;
+    public Object remoteInstance(@PathVariable Integer id) {
+        return remoteService.inst(id);
     }
 
     @GetMapping(value = "/instance")
     public Object instance() {
         return INSTANCE_UUID.toString() + " serve @ port " + port + " version: " + version;
+    }
+
+    @GetMapping(value = "/timeout")
+    public Object timeoutTest() {
+        return remoteService.timeout();
     }
 }

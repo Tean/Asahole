@@ -33,6 +33,11 @@
             <artifactId>cloud_config_client_module</artifactId>
             <version>${cloud.config.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-metrics-event-stream</artifactId>
+            <version>1.5.12</version>
+        </dependency>
     </dependencies>
 
 </project>

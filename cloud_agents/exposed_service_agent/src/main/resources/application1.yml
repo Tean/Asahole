@@ -18,7 +18,7 @@ server:
       suffix: .log
 spring:
   application:
-    name: /service-zookeeper
+    name: service-zookeeper
   cloud:
     zookeeper:
       discovery:
