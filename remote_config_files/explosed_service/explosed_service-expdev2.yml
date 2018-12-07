@@ -2,4 +2,4 @@ version:  1.0.SNAPSHOT
 git:
   version: dev/expdev2
 server:
-  port: 9981
+  port: 9982
