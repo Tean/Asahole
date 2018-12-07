@@ -1,8 +1,5 @@
 #必须有bootstrap.yml,否则不能加载spring cloud config server 配置
 
-server:
-  port: 8086
-
 feign:
   hystrix:
     enabled: true
