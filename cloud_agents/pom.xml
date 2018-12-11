@@ -15,6 +15,7 @@
         <module>zkui_agent</module>
         <module>config_service_agent</module>
         <module>hystrix_monitor</module>
+        <module>exposed_service_agent_kt</module>
     </modules>
 
 

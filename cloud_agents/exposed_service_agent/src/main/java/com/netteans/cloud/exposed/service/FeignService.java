@@ -1,4 +1,4 @@
-package com.netteans.cloud.explosed.service;
+package com.netteans.cloud.exposed.service;
 
 import com.netteans.domain.DemoUser;
 import feign.hystrix.FallbackFactory;
@@ -25,7 +25,7 @@ public interface FeignService {
 @Component
 class FallBackMethodsFactory implements FallbackFactory<FeignService> {
 
-    public Logger logger = LoggerFactory.getLogger(FallBackMethodsFactory.class);
+    private Logger logger = LoggerFactory.getLogger(FallBackMethodsFactory.class);
 
     @Override
     public FeignService create(Throwable throwable) {

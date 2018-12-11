@@ -1,4 +1,4 @@
-package com.netteans.cloud.explosed.service;
+package com.netteans.cloud.exposed.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-public class FeignConotroller {
+public class FeignConotrller {
     private final static UUID INSTANCE_UUID = UUID.randomUUID();
 
     @Autowired
-    private FeignService remoteService;
+    private FeignService feignService;
 
     @Value("${version}")
     private String version;
@@ -27,7 +27,7 @@ public class FeignConotroller {
 
     @RequestMapping(value = {"/get/{id}", "/get"}, method = {RequestMethod.GET, RequestMethod.DELETE})
     public Object remoteInstance(@PathVariable Integer id) {
-        return remoteService.inst(id);
+        return feignService.inst(id);
     }
 
     @GetMapping(value = "/instance")
@@ -37,6 +37,6 @@ public class FeignConotroller {
 
     @GetMapping(value = "/timeout")
     public Object timeoutTest() {
-        return remoteService.timeout();
+        return feignService.timeout();
     }
 }
