@@ -1,4 +1,4 @@
-package com.netteans.log.aspectj;
+package com.netteans.logging.request.aspectj;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;

@@ -1,4 +1,4 @@
-package com.netteans.log.annotation;
+package com.netteans.logging.request.annotation;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 
