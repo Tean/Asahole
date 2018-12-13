@@ -1,7 +1,5 @@
 package com.netteans.agent.test;
 
-import com.netteans.agent.Bootstrap;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

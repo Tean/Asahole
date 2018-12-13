@@ -1,7 +1,17 @@
+#idea
 .idea/
 *.ipr
 *.iws
 *.iml
+
+#eclipse
+*.settings/
+*.classpath
+*.project
+
+#vscode
+.vscode/
+*.factorypath
 
 */target/
 */log/

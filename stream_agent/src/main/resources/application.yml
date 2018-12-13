@@ -1,0 +1,29 @@
+server:
+  port: 8081
+  address: 0.0.0.0
+  sessionTimeout: 15
+  context-path: /
+  tomcat:
+    basedir: ./tmp
+    accesslog:
+      buffered: true
+      directory: ./logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+
+#server.tomcat.access-log-pattern= # log pattern of the access log
+#server.tomcat.access-log-enabled=false # is access logging enabled
+#spring.data.mongodb.uri=mongodb://192.168.255.130:27017/push_cache
+#security.basic.path=/demo/user/**
+#security.user.name=admin
+#security.user.password=test
+
+spring:
+  messages:
+    basename: i18n.messages

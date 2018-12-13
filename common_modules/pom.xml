@@ -19,6 +19,7 @@
         <module>test_module</module>
         <module>config_module</module>
         <module>valid_module</module>
+        <module>request_log_module</module>
     </modules>
     
 </project>

@@ -5,39 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.netteans</groupId>
-    <artifactId>service_agent</artifactId>
+    <artifactId>stream_agent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.1</version>
-                <configuration>
-                    <createDependencyReducedPom>false</createDependencyReducedPom>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.netteans.agent.service.Bootstrap</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -47,23 +16,12 @@
         <spring.boot.starter.web.version>2.1.0.RELEASE</spring.boot.starter.web.version>
         <spring.boot.test.version>2.1.0.RELEASE</spring.boot.test.version>
         <spring.test.version>5.1.2.RELEASE</spring.test.version>
+        <spring.webmvc.version>5.1.2.RELEASE</spring.webmvc.version>
 
-        <service.controller.version>1.0-SNAPSHOT</service.controller.version>
-        <common.modules.version>1.0-SNAPSHOT</common.modules.version>
         <log.module.version>1.0-SNAPSHOT</log.module.version>
+        <requestlog.module.version>1.0-SNAPSHOT</requestlog.module.version>
         <test.module.version>1.0-SNAPSHOT</test.module.version>
-        <cloud.module.version>1.0-SNAPSHOT</cloud.module.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.netteans.common</groupId>
-                <artifactId>cloud_module</artifactId>
-                <version>${cloud.module.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!-- scope:compile -->
@@ -86,15 +44,20 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans</groupId>
-            <artifactId>service_controller</artifactId>
-            <version>${service.controller.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.webmvc.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.netteans.common</groupId>
             <artifactId>log_module</artifactId>
             <version>${log.module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netteans.common</groupId>
+            <artifactId>request_log_module</artifactId>
+            <version>${requestlog.module.version}</version>
         </dependency>
 
         <!-- scope:test -->
@@ -110,11 +73,6 @@
             <version>${spring.test.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
 
         <dependency>
             <groupId>com.netteans.common</groupId>
@@ -123,4 +81,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>

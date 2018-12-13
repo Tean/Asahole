@@ -1,0 +1,143 @@
+configuration:
+  status: "OFF"
+  monitorInterval: "30"
+  appenders:
+    Console:
+      name: "Console"
+      target: "SYSTEM_OUT"
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=magenta, TRACE=blue} %style{%logger{36}[}{green}%style{%L}{blue}%style{]}{green} %M - %msg%n"
+      Filters:
+        ThresholdFilter:
+        -
+          level: "info"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "debug"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "warn"
+          onMatch: "ACCEPT"
+          onMismatch: "NETURAL"
+        -
+          level: "error"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+    RollingRandomAccessFile:
+    -
+      name: "DebugFile"
+      filename: "logs/debug/debug.log"
+      filepattern: "logs/debug/$${date:yyyy-MM}/log.%d{yyyyMMdd}.-%i.gz"
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+      Filters:
+        ThresholdFilter:
+        -
+          level: "debug"
+          onMatch: "ACCEPT"
+          onMismatch: "DENY"
+      Policies:
+        OnStartupTriggeringPolicy: {}
+        SizeBasedTriggeringPolicy:
+          size: "4 MB"
+        TimeBasedTriggeringPolicy: {}
+    -
+      name: "ErrorFile"
+      filename: "logs/error/error.log"
+      filepattern: "logs/error/$${date:yyyy-MM}/error.%d{yyyyMMdd}.-%i.gz"
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+      Filters:
+        ThresholdFilter:
+          level: "error"
+          onMatch: "ACCEPT"
+          onMismatch: "DENY"
+      Policies:
+        OnStartupTriggeringPolicy: {}
+        SizeBasedTriggeringPolicy:
+          size: "4 MB"
+        TimeBasedTriggeringPolicy: {}
+    -
+      name: "HistoryFile"
+      filename: "logs/history/history.log"
+      filepattern: "logs/history/$${date:yyyy-MM}/history.%d{yyyyMMdd}.-%i.gz"
+      PatternLayout:
+        charset: "UTF-8"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+      Filters:
+        ThresholdFilter:
+        -
+          level: "trace"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "info"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "debug"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "warn"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+        -
+          level: "error"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
+      Policies:
+        OnStartupTriggeringPolicy: {}
+        SizeBasedTriggeringPolicy:
+          size: "4 MB"
+        TimeBasedTriggeringPolicy: {}
+#    NoSql:
+#      name: "mongodb"
+#      bufferSize: "10"
+#      MongoDb:
+#        databaseName: "logs"
+#        collectionName: "test"
+#        server: "localhost"
+#        port: "27017"
+#      Filters:
+#        ThresholdFilter:
+#        -
+#          level: "info"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "debug"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "warn"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+#        -
+#          level: "error"
+#          onMatch: "ACCEPT"
+#          onMismatch: "NEUTRAL"
+  loggers:
+    logger:
+      name: "history"
+      AppenderRef:
+      -
+        ref: "HistoryFile"
+#      -
+#        ref: "ErrorFile"
+#      -
+#        ref: "mongodb"
+    root:
+      level: "debug"
+      AppenderRef:
+      -
+        ref: "Console"
+      -
+        ref: "DebugFile"
+      -
+        ref: "ErrorFile"

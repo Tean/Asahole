@@ -1,4 +1,4 @@
-package com.netteans.agent;
+package com.netteans.agent.stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
