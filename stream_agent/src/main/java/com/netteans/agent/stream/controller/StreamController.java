@@ -1,5 +1,6 @@
 package com.netteans.agent.stream.controller;
 
+import com.netteans.logging.request.annotation.RequestLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -18,10 +19,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Controller
+//@RequestLog
 public class StreamController {
     private final static Logger logger = LoggerFactory.getLogger(StreamController.class);
 
     @RequestMapping(value = {"/"}, method = {RequestMethod.GET})
+    @RequestLog
     public Object root() {
         return ResponseEntity.ok("exists");
     }

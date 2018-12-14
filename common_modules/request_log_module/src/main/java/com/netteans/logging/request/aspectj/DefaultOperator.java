@@ -13,10 +13,11 @@ import org.slf4j.LoggerFactory;
 public class DefaultOperator {
     private static final Logger logger = LoggerFactory.getLogger(DefaultOperator.class);
 
-    //    @Pointcut("execution(** com.netteans..*.*(..))")
-    //    @Pointcut("@within(org.springframework.stereotype.Controller)")
-    @Pointcut("@annotation(com.netteans.log.annotation.RequestLog)")
-    //    @Pointcut("execution(** com.netteans..*.*(..)) && @within(org.springframework.stereotype.Controller) && @annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    //    @Pointcut("execution(** com.netteans..*.*(..))") //切入com.netteans及其子包任意参数以及返回值的方法
+    //    @Pointcut("@within(org.springframework.stereotype.Controller)") //切入包含org.springframework.stereotype.Controller注解的类的方法
+    //    @Pointcut("@annotation(com.netteans.logging.request.annotation.RequestLog)") //切入带有com.netteans.logging.request.annotation.RequestLog注解的方法
+    //    @Pointcut("execution(** com.netteans..*.*(..)) && @within(org.springframework.stereotype.Controller) && @annotation(org.springframework.web.bind.annotation.RequestMapping)") //&& || 逻辑操作
+    @Pointcut("@annotation(com.netteans.logging.request.annotation.RequestLog) || @within(com.netteans.logging.request.annotation.RequestLog)")
     public void injectpointcut() {
         logger.info("init pointcut {}", this);
     }
@@ -46,12 +47,13 @@ public class DefaultOperator {
     }
 
     @Around("injectpointcut()")
-    public void around(ProceedingJoinPoint joinPoint) {
+    public Object around(ProceedingJoinPoint joinPoint) {
         logger.error("aspectj around with param {}", joinPoint);
         try {
-            joinPoint.proceed();
+            return joinPoint.proceed();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
+            return null;
         }
     }
 }

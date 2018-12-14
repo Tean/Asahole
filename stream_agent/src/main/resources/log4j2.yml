@@ -16,7 +16,7 @@ configuration:
           onMismatch: "NEUTRAL"
         -
           level: "debug"
-          onMatch: "ACCEPT"
+          onMatch: "DENY"
           onMismatch: "NEUTRAL"
         -
           level: "warn"

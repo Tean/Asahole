@@ -1,10 +1,9 @@
 package com.netteans.agent.stream;
 
-import com.netteans.log.aspectj.DefaultOperator;
+import com.netteans.logging.request.aspectj.DefaultOperator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.web.servlet.LocaleResolver;
