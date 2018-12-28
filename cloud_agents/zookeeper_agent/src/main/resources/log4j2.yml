@@ -1,4 +1,8 @@
 configuration:
+  CustomLevels:
+    CustomLevel:
+      name: "HISTORY"
+      interval: "350"
   status: "OFF"
   monitorInterval: "30"
   appenders:
@@ -7,7 +11,7 @@ configuration:
       target: "SYSTEM_OUT"
       PatternLayout:
         charset: "UTF-8"
-        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=magenta, TRACE=blue} %style{%logger{36}[}{green}%style{%L}{blue}%style{]}{green} %M - %msg%n"
+        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=magenta, TRACE=blue} %style{%c{10}}{yellow} %style{[}{cyan}%style{%L}{blue}%style{]}{green} %M - %msg%n"
       Filters:
         ThresholdFilter:
         -
@@ -26,6 +30,10 @@ configuration:
           level: "error"
           onMatch: "ACCEPT"
           onMismatch: "NEUTRAL"
+        -
+          level: "history"
+          onMatch: "ACCEPT"
+          onMismatch: "NEUTRAL"
     RollingRandomAccessFile:
     -
       name: "DebugFile"
@@ -33,7 +41,7 @@ configuration:
       filepattern: "logs/debug/$${date:yyyy-MM}/log.%d{yyyyMMdd}.-%i.gz"
       PatternLayout:
         charset: "UTF-8"
-        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
       Filters:
         ThresholdFilter:
         -
@@ -51,7 +59,7 @@ configuration:
       filepattern: "logs/error/$${date:yyyy-MM}/error.%d{yyyyMMdd}.-%i.gz"
       PatternLayout:
         charset: "UTF-8"
-        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
       Filters:
         ThresholdFilter:
           level: "error"
@@ -68,7 +76,7 @@ configuration:
       filepattern: "logs/history/$${date:yyyy-MM}/history.%d{yyyyMMdd}.-%i.gz"
       PatternLayout:
         charset: "UTF-8"
-        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}[%L] %M - %msg%n"
+        pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
       Filters:
         ThresholdFilter:
         -
