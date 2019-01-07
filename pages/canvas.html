@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="colornames.js"></script>
+  <title>Vivonvon</title>
+</head>
+
+<body>
+  <canvas id="myCanvas" width="800px" height="800px" style="border:1px solid #000000;">
+    您的浏览器不支持 HTML5 canvas 标签。
+  </canvas>
+  <script>
+    Date.prototype.Format = function (fmt) {
+      //author: meizz
+      var o = {
+        'M+': this.getMonth() + 1, //月份
+        'd+': this.getDate(), //日
+        'H+': this.getHours(), //小时
+        'm+': this.getMinutes(), //分
+        's+': this.getSeconds(), //秒
+        'q+': Math.floor((this.getMonth() + 3) / 3), //季度
+        S: this.getMilliseconds() //毫秒
+      };
+      if (/(y+)/.test(fmt))
+        fmt = fmt.replace(
+          RegExp.$1,
+          (this.getFullYear() + '').substr(4 - RegExp.$1.length)
+        );
+      for (var k in o)
+        if (new RegExp('(' + k + ')').test(fmt))
+          fmt = fmt.replace(
+            RegExp.$1,
+            RegExp.$1.length == 1
+              ? o[k]
+              : ('00' + o[k]).substr(('' + o[k]).length)
+          );
+      return fmt;
+    };
+
+    const rp = new RpeatColor();
+    const gp = new RpeatColor();
+    const bp = new RpeatColor();
+    var crgb = { r: 0, g: 0, b: 0, revert: false };
+    var constine = {};
+    constine.rgb = crgb;
+    constine.second = 23 * 3600 + 3500;
+
+    const convertZeroFillStr = (number, decimal) => {
+      if (decimal == null) decimal = 16;
+      var str = number.toString(decimal);
+      return str.length == 0 ? '00' : str.length == 1 ? '0' + str : str;
+    };
+    const round256 = number => {
+      if (number < 256 && number >= 0) {
+        return number;
+      } else if (number < 0) {
+        return round256(number + 256);
+      } else {
+        return round256(number - 256);
+      }
+    };
+    const round16777215 = number => {
+      if (number < 16777215 && number >= 0) {
+        return number;
+      } else if (number < 0) {
+        return round16777215(number + 16777215);
+      } else {
+        return round16777215(number - 16777215);
+      }
+    };
+
+    const drawRGBLine = (ctx, rgb) => {
+      const cwidth = ctx.canvas.width;
+      const cheight = ctx.canvas.height;
+      var adjustColor = 'r';
+
+      if (!rgb.revert) {
+        if (rgb.r < 255) {
+          adjustColor = 'r';
+        } else {
+          if (rgb.g < 255) {
+            adjustColor = 'g';
+          } else {
+            if (rgb.b < 255) {
+              adjustColor = 'b';
+            } else {
+              adjustColor = 'rgb';
+            }
+          }
+        }
+      } else {
+        if (rgb.r > 0) {
+          adjustColor = 'r';
+        } else {
+          if (rgb.g > 0) {
+            adjustColor = 'g';
+          } else {
+            if (rgb.b > 0) {
+              adjustColor = 'b';
+            } else {
+              adjustColor = 'rgb';
+            }
+          }
+        }
+      }
+
+      //yval = cheight-(cheight*rgb.r/256)
+      let flashRate = 3;
+      if (
+        adjustColor === 'g' ||
+        adjustColor === 'b' ||
+        rgb.r % flashRate != 0
+      ) {
+        ctx.fillStyle = '#' + convertZeroFillStr(rgb.r) + '0000';
+        var rax = rgb.r + 1;
+        ctx.fillRect(
+          25,
+          cheight - (cheight * rax) / 256,
+          15,
+          (cheight * rax) / 256
+        );
+      } else {
+        // console.log(JSON.stringify(rgb));
+      }
+
+      if (
+        adjustColor === 'r' ||
+        adjustColor === 'b' ||
+        rgb.g % flashRate != 0
+      ) {
+        ctx.fillStyle = '#00' + convertZeroFillStr(rgb.g) + '00';
+        var gax = rgb.g + 1;
+        ctx.fillRect(
+          45,
+          cheight - (cheight * gax) / 256,
+          15,
+          (cheight * gax) / 256
+        );
+      } else {
+        // console.log(JSON.stringify(rgb));
+      }
+
+      if (
+        adjustColor === 'r' ||
+        adjustColor === 'g' ||
+        rgb.b % flashRate != 0
+      ) {
+        ctx.fillStyle = '#0000' + convertZeroFillStr(rgb.b);
+        var bax = rgb.b + 1;
+        ctx.fillRect(
+          65,
+          cheight - (cheight * bax) / 256,
+          15,
+          (cheight * bax) / 256
+        );
+      } else {
+        // console.log(JSON.stringify(rgb));
+      }
+
+      var r = { revert: rgb.revert };
+      if (adjustColor === 'rgb') {
+        r = {
+          r: rgb.r,
+          g: rgb.g,
+          b: rgb.b,
+          revert: !rgb.revert
+        };
+      } else {
+        if (!r.revert) {
+          r = {
+            r: adjustColor === 'r' ? round256(rgb.r + 1) : rgb.r,
+            g: adjustColor === 'g' ? round256(rgb.g + 1) : rgb.g,
+            b: adjustColor === 'b' ? round256(rgb.b + 1) : rgb.b,
+            revert: rgb.revert
+          };
+        } else {
+          r = {
+            r: adjustColor === 'r' ? round256(rgb.r - 1) : rgb.r,
+            g: adjustColor === 'g' ? round256(rgb.g - 1) : rgb.g,
+            b: adjustColor === 'b' ? round256(rgb.b - 1) : rgb.b,
+            revert: rgb.revert
+          };
+        }
+      }
+      return r;
+    };
+
+    const drawArc = ctx => {
+      const cwidth = ctx.canvas.width;
+      const cheight = ctx.canvas.height;
+
+      const arcPoint = { x: cwidth / 2, y: cheight / 2 };
+
+      const qurtez = (2 * Math.PI) / 4;
+      const now = new Date();
+      var hour = parseInt(now.Format('HH'));
+      var minute = parseInt(now.Format('mm'));
+      var second = parseInt(now.Format('ss'));
+
+      // // test
+      // constine.second++;
+      // if (constine.second >= 86400) constine.second = 0;
+      // const sec = constine.second;
+      // hour = parseInt(sec / 3600);
+      // minute = parseInt((sec - hour * 3600) / 60);
+      // second = sec - hour * 3600 - minute * 60;
+      // console.log(hour + ':' + minute + ':' + second + '  ---- ' + sec);
+
+
+      const scaler = 3.5;
+      const secondr = 80 * scaler;
+      const ang = (Math.PI * 2) / 60;
+
+      ctx.strokeStyle = 'black';
+      ctx.beginPath();
+
+      const colors = colornames.getRandomColorName(3);
+      // console.log(colors);
+      // const hourcolor = colors[0];
+      // const minutecolor = colors[1];
+      // const secondcolor = colors[2];
+
+      rp.rpeatStart();
+      const hourcolor = '#' + convertZeroFillStr(rp.r) + convertZeroFillStr(rp.g) + convertZeroFillStr(rp.b);
+      gp.rpeatStart();
+      const minutecolor = '#' + convertZeroFillStr(gp.r) + convertZeroFillStr(gp.g) + convertZeroFillStr(gp.b);
+      bp.rpeatStart();
+      const secondcolor = '#' + convertZeroFillStr(bp.r) + convertZeroFillStr(bp.g) + convertZeroFillStr(bp.b);
+
+      const secondxs = Math.sin((90 - second) * ang) * secondr + arcPoint.x;
+      const secondys = Math.cos((90 - second) * ang) * secondr + arcPoint.y;
+      ctx.fillStyle = secondcolor;
+      ctx.strokeStyle = secondcolor;
+      ctx.arc(
+        arcPoint.x,
+        arcPoint.y,
+        secondr,
+        0 - qurtez,
+        (second * (2 * Math.PI)) / 60 - qurtez,
+        false
+      );
+      ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      const minuter = 60 * scaler;
+      ctx.beginPath();
+      ctx.fillStyle = minutecolor;
+      ctx.strokeStyle = minutecolor;
+      ctx.arc(
+        arcPoint.x,
+        arcPoint.y,
+        minuter,
+        0 - qurtez,
+        (minute * (2 * Math.PI)) / 60 - qurtez,
+        false
+      );
+      ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      const hourr = 40 * scaler;
+      ctx.beginPath();
+      ctx.fillStyle = hourcolor;
+      ctx.strokeStyle = hourcolor;
+      ctx.arc(
+        arcPoint.x,
+        arcPoint.y,
+        hourr,
+        0 - qurtez,
+        ((hour % 12) * (2 * Math.PI)) / 12 - qurtez,
+        false
+      );
+      ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      var r = 255;
+      var g = 0;
+      var b = 0;
+      const sunr = 20 * scaler;
+      if ((hour >= 0 && hour < 6) || (hour >= 22 && hour < 24)) {
+        const totalMins = 8 * 60;
+        const currMins = minute + ((hour >= 22 && hour < 24) ? (hour - 22) * 60 : (hour + 2) * 60);
+        r = parseInt(256 * currMins / totalMins);
+        g = parseInt(256 * currMins / totalMins);
+        b = parseInt(256 * currMins / totalMins);
+      } else if (hour >= 6 && hour < 14) {
+        const totalMins = 8 * 60;
+        const currMins = minute + (hour - 6) * 60;
+        g = 255 - parseInt(256 * currMins / totalMins);
+        b = 255 - parseInt(256 * currMins / totalMins);
+      } else {
+        const totalMins = 8 * 60;
+        const currMins = minute + (hour - 14) * 60;
+        r = 255 - parseInt(256 * currMins / totalMins);
+      }
+      const sunStyle = '#' + convertZeroFillStr(r) + convertZeroFillStr(g) + convertZeroFillStr(b);
+      if (second % 5 == 0)
+        console.log('rgb(' + r + ',' + g + ',' + b + ')');
+      ctx.beginPath();
+      ctx.fillStyle = sunStyle;
+      ctx.strokeStyle = sunStyle;
+      ctx.arc(
+        arcPoint.x,
+        arcPoint.y,
+        sunr,
+        0 - qurtez,
+        ((hour >= 12 ? 2 : 1) * (2 * Math.PI)) / 2 - qurtez,
+        false
+      );
+      // ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      const minr = 60 * scaler;
+      const maxr = 400 * scaler;
+      const minrlen = 10 * scaler;
+      for (var i = 0; i < 60; i++) {
+        const randr = Math.random() * (maxr - minr) + minr + minrlen;
+        const cang = i * ang;
+
+        const xs = Math.sin(cang) * minr + arcPoint.x;
+        const ys = Math.cos(cang) * minr + arcPoint.y;
+
+        const xp = Math.sin(cang) * randr + arcPoint.x;
+        const yp = Math.cos(cang) * randr + arcPoint.y;
+        ctx.strokeStyle = '#' + parseInt(Math.random() * 256) + parseInt(Math.random() * 256) + parseInt(Math.random() * 256);
+        ctx.beginPath();
+        ctx.lineWidth = 1;
+        ctx.moveTo(xs, ys);
+        ctx.lineTo(xp, yp);
+        ctx.stroke();
+        // if (i == 0) {
+        //   console.log(arcPoint.x + ',' + arcPoint.y + ' to ', xp + ',' + yp);
+        //   console.log(randr);
+        // }
+      }
+
+
+      const hourxs = Math.sin((90 - hour * 5) * ang) * hourr + arcPoint.x;
+      const hourys = Math.cos((90 - hour * 5) * ang) * hourr + arcPoint.y;
+      ctx.beginPath();
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 4 * scaler;
+      ctx.moveTo(hourxs, hourys);
+      ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.stroke();
+
+      const minutexs = Math.sin((90 - minute) * ang) * minuter + arcPoint.x;
+      const minuteys = Math.cos((90 - minute) * ang) * minuter + arcPoint.y;
+      ctx.beginPath();
+      ctx.strokeStyle = 'black';
+      ctx.lineWidth = 2 * scaler;
+      ctx.moveTo(minutexs, minuteys);
+      ctx.lineTo(arcPoint.x, arcPoint.y);
+      ctx.stroke();
+    };
+
+    const adjust = (resolve, reject) => {
+      const c = document.getElementById('myCanvas');
+      const ctx = c.getContext('2d');
+      const cwidth = ctx.canvas.width;
+      const cheight = ctx.canvas.height;
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, cwidth, cheight);
+
+      let color =
+        '#' +
+        convertZeroFillStr(constine.rgb.r) +
+        convertZeroFillStr(constine.rgb.g) +
+        convertZeroFillStr(constine.rgb.b);
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, 15, cheight);
+      drawArc(ctx);
+      var r = drawRGBLine(ctx, constine.rgb);
+      // console.log(color);
+      resolve(r);
+    };
+
+    var promise = _ => {
+      return new Promise(adjust)
+        .then(result => {
+          constine.rgb.r = result.r;
+          constine.rgb.g = result.g;
+          constine.rgb.b = result.b;
+          constine.rgb.revert = result.revert;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    };
+
+    promise();
+    setInterval(_ => {
+      promise();
+    }, 200);
+  </script>
+</body>
+
+</html>
