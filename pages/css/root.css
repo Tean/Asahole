@@ -1,0 +1,46 @@
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+body div {
+    font-size: 64px;
+    animation: rotation 5s infinite;
+    -webkit-animation: rotation 5s infinite;
+}
+
+@keyframes rotation {
+    0% {
+        top: 0px;
+    }
+
+    25% {
+        top: 200px;
+    }
+
+    75% {
+        top: 50px
+    }
+
+    100% {
+        top: 100px;
+    }
+}
+
+@-webkit-keyframes rotation {
+    0% {
+        top: 0px;
+    }
+
+    25% {
+        top: 200px;
+    }
+
+    75% {
+        top: 50px
+    }
+
+    100% {
+        top: 100px;
+    }
+}
