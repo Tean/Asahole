@@ -1,5 +1,6 @@
 package com.netteans.agent.test;
 
+import com.netteans.agent.service.Bootstrap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {Bootstrap.class})
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 public class DemoApplicationTests {

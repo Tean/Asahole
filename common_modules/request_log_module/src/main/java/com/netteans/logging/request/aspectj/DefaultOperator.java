@@ -52,7 +52,7 @@ public class DefaultOperator {
         try {
             return joinPoint.proceed();
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
+            logger.error("{}", throwable);
             return null;
         }
     }

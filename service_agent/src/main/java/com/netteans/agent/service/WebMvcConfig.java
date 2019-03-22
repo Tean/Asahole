@@ -1,5 +1,6 @@
 package com.netteans.agent.service;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 import java.util.Locale;
 
-@Configuration
+@SpringBootConfiguration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.netteans")
 public class WebMvcConfig implements WebMvcConfigurer {

@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Type;
+
 public class OtherTestBootStrap {
     private final static Logger logger = LoggerFactory.getLogger(OtherTestBootStrap.class);
 
@@ -51,12 +53,7 @@ public class OtherTestBootStrap {
                 new Where(
                         new Equal<String>(() -> "what", "xxx"))
                         .and(
-                                new Or(
-                                        new AbstractCalc[]{
-                                                new And(new GT<>(() -> "the", 212)),
-                                                new And(new LT<Double>(() -> "fuck", 3.14159))
-                                        }
-                                )
+                                new Or(new RLike(() -> "what", "ask")).and(new And(new LLike(() -> "what", "qqq")))
                         )
         ).toSql());
     }
@@ -146,6 +143,7 @@ interface IRow {
 interface IQuery<I extends AbstractQuery> {
     String SPACE = " ";
     String SingleQuote = "'";
+    String LIKEQUOTE = "%";
 
     String label();
 
@@ -155,12 +153,27 @@ interface IQuery<I extends AbstractQuery> {
 abstract class AbstractCalc {
     final String LABEL;
     final AbstractCondition condition;
-    final AbstractCalc[] calcs;
+    String nLabel = "";
+    AbstractCalc preCalc;
+    AbstractCalc nextCalc;
 
-    public AbstractCalc(String label, AbstractCondition condition, AbstractCalc[] calcs) {
+    public AbstractCalc(String label, AbstractCondition condition) {
         this.LABEL = label;
         this.condition = condition;
-        this.calcs = calcs;
+    }
+
+    AbstractCalc and(AbstractCalc andCalc) {
+        andCalc.preCalc = this;
+        this.nextCalc = andCalc;
+        this.nLabel = "And";
+        return this;
+    }
+
+    AbstractCalc or(AbstractCalc orCalc) {
+        orCalc.preCalc = this;
+        this.nextCalc = orCalc;
+        this.nLabel = "Or";
+        return this;
     }
 
     abstract String toSql();
@@ -169,11 +182,7 @@ abstract class AbstractCalc {
 class And extends AbstractCalc {
 
     public And(AbstractCondition condition) {
-        super("And", condition, new AbstractCalc[0]);
-    }
-
-    public And(AbstractCalc[] calcs) {
-        super("And", null, calcs);
+        super("And", condition);
     }
 
     @Override
@@ -181,15 +190,7 @@ class And extends AbstractCalc {
         StringBuilder sql = new StringBuilder();
         if (this.condition != null) {
             sql.append(IQuery.SPACE).append(this.condition.toSql()).append(IQuery.SPACE);
-            return sql.toString();
-        }
-        sql.append("And").append(IQuery.SPACE);
-        if (this.calcs.length > 0) {
-            sql.append("(");
-            for (int i = 0; i < this.calcs.length; i++) {
-                sql.append(this.calcs[i].toSql());
-            }
-            sql.append(")");
+            return sql.toString() + (this.nextCalc == null ? "" : IQuery.SPACE + this.nLabel + IQuery.SPACE + this.nextCalc.toSql());
         }
         return sql.toString();
     }
@@ -197,11 +198,7 @@ class And extends AbstractCalc {
 
 class Or extends AbstractCalc {
     public Or(AbstractCondition condition) {
-        super("Or", condition, new AbstractCalc[0]);
-    }
-
-    public Or(AbstractCalc[] calcs) {
-        super("Or", null, calcs);
+        super("Or", condition);
     }
 
     @Override
@@ -209,17 +206,7 @@ class Or extends AbstractCalc {
         StringBuilder sql = new StringBuilder();
         if (this.condition != null) {
             sql.append(IQuery.SPACE).append(this.condition.toSql()).append(IQuery.SPACE);
-            return sql.toString();
-        }
-        sql.append("Or").append(IQuery.SPACE);
-        if (this.calcs.length > 0) {
-            sql.append("(");
-            for (int i = 0; i < this.calcs.length; i++) {
-                sql.append(this.calcs[i].toSql());
-                if (i < this.calcs.length - 1)
-                    sql.append(this.calcs[i].LABEL);
-            }
-            sql.append(")");
+            return sql.toString() + (this.nextCalc == null ? "" : IQuery.SPACE + this.nLabel + IQuery.SPACE + this.nextCalc.toSql());
         }
         return sql.toString();
     }
@@ -232,13 +219,16 @@ interface IWhere<C extends AbstractCalc> {
 
     String toSql();
 
-    IWhere<C> and(AbstractCalc or);
+    IWhere<C> and(AbstractCalc and);
+
+    IWhere<C> or(AbstractCalc or);
 }
 
 class Where<C> implements IWhere {
 
     AbstractCalc calc;
     final AbstractCondition condition;
+    private String nLabel;
 
     public Where(AbstractCondition condition) {
         this.condition = condition;
@@ -251,13 +241,21 @@ class Where<C> implements IWhere {
 
     @Override
     public String toSql() {
-        return this.condition.toSql() + IQuery.SPACE + calc.toSql();
+        return this.condition.toSql() + (this.nLabel == null ? "" : IQuery.SPACE + this.nLabel) + IQuery.SPACE + calc.toSql();
     }
 
     @Override
-    public Where<C> and(AbstractCalc calc) {
-        this.calc = calc;
+    public Where<C> and(AbstractCalc and) {
+        this.calc = and;
+        this.nLabel = "And";
         return this;
+    }
+
+    @Override
+    public IWhere or(AbstractCalc or) {
+        this.calc = or;
+        this.nLabel = "Or";
+        return null;
     }
 }
 
@@ -293,6 +291,42 @@ class Equal<Type> extends AbstractCondition<Type> {
 
     public Equal(IColumn column, Type value) {
         super(column, value, "=");
+    }
+}
+
+class Like<Type extends String> extends AbstractCondition<Type> {
+
+    public Like(IColumn column, Type value) {
+        super(column, value, "like");
+    }
+
+    @Override
+    String toSql() {
+        return this.column.getName() + IQuery.SPACE + this.operator + IQuery.SPACE + IQuery.SingleQuote + IQuery.LIKEQUOTE + this.value + IQuery.LIKEQUOTE + IQuery.SingleQuote;
+    }
+}
+
+class LLike<Type extends String> extends Like<Type> {
+
+    public LLike(IColumn column, Type value) {
+        super(column, value);
+    }
+
+    @Override
+    String toSql() {
+        return this.column.getName() + IQuery.SPACE + this.operator + IQuery.SPACE + IQuery.SingleQuote + IQuery.LIKEQUOTE + this.value + IQuery.SingleQuote;
+    }
+}
+
+class RLike<Type extends String> extends Like<Type> {
+
+    public RLike(IColumn column, Type value) {
+        super(column, value);
+    }
+
+    @Override
+    String toSql() {
+        return this.column.getName() + IQuery.SPACE + this.operator + IQuery.SPACE + IQuery.SingleQuote + this.value + IQuery.LIKEQUOTE + IQuery.SingleQuote;
     }
 }
 
