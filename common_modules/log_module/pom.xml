@@ -40,11 +40,18 @@
         <!--<dependency> &lt;!&ndash; slf4j 的 jboss 实现 &ndash;&gt;-->
         <!--<groupId>org.jboss.slf4j</groupId>-->
         <!--<artifactId>slf4j-jboss-logging</artifactId>-->
-        <!--<version>${slf4j.jboss.logging.version}</version>-->
         <!--</dependency>-->
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
+        </dependency>
+        <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
         </dependency>
 
         <dependency>
