@@ -12,61 +12,44 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <slf4j.version>1.7.25</slf4j.version>
-        <log4j2.version>2.11.1</log4j2.version>
-        <jackson.dataformat.yaml.version>2.9.7</jackson.dataformat.yaml.version>
-        <jcl.over.slf4j.version>1.7.25</jcl.over.slf4j.version>
-        <jul.to.slf4j.version>1.7.25</jul.to.slf4j.version>
-        <slf4j.jboss.logging.version>1.1.0.Final</slf4j.jboss.logging.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${jcl.over.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jul-to-slf4j</artifactId>
-            <version>${jul.to.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
         </dependency>
         <dependency> <!-- slf4j 的 log4j2 实现 -->
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j2.version}</version>
         </dependency>
         <!--<dependency> &lt;!&ndash; slf4j 的 jboss 实现 &ndash;&gt;-->
-            <!--<groupId>org.jboss.slf4j</groupId>-->
-            <!--<artifactId>slf4j-jboss-logging</artifactId>-->
-            <!--<version>${slf4j.jboss.logging.version}</version>-->
+        <!--<groupId>org.jboss.slf4j</groupId>-->
+        <!--<artifactId>slf4j-jboss-logging</artifactId>-->
+        <!--<version>${slf4j.jboss.logging.version}</version>-->
         <!--</dependency>-->
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>${jackson.dataformat.yaml.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.netteans.common</groupId>
             <artifactId>test_module</artifactId>
-            <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
