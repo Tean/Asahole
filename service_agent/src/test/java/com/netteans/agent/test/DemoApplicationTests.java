@@ -52,7 +52,9 @@ public class DemoApplicationTests {
         String resp = mockMvc.perform(get("/get/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andReturn().getResponse().getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
         JSONAssert.assertEquals("{\n" +
                 "  \"name\": \"{id:1}\",\n" +
                 "  \"password\": \"id demo\",\n" +

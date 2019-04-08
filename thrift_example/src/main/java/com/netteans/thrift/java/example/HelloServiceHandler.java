@@ -9,15 +9,23 @@ public class HelloServiceHandler implements HelloService.Iface {
 
     public int question(String param) throws TException {
         if (param != null && !param.equalsIgnoreCase("")) {
+            question = param;
             return 1;
         }
         return 0;
     }
 
     public ExpDomain answer() throws TException {
-        if (!question.equalsIgnoreCase("quit")) {
-            return new ExpDomain((byte) 0x01);
+        ExpDomain expDomain;
+        if (question.equalsIgnoreCase("quit")) {
+            expDomain = new ExpDomain((byte) 0x00);
+            expDomain.domainString = "exit";
+            return expDomain;
+        } else if (question.equalsIgnoreCase("error")) {
+            throw new TException("Error test");
         }
-        return new ExpDomain((byte) 0x00);
+        expDomain = new ExpDomain((byte) 0x01);
+
+        return expDomain;
     }
 }
