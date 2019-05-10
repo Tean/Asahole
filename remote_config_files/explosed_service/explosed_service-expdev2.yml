@@ -3,3 +3,16 @@ git:
   version: dev/expdev2
 server:
   port: 9982
+
+feign:
+  hystrix:
+    enabled: true  #是否开启熔断器
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true  #是否开启超时熔断, 如果为false, 则熔断机制只在服务不可用时开启
+        isolation:
+          thread:
+            timeoutInMilliseconds: 300   #设置超时熔断时间
