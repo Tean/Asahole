@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: app
+  cloud:
+    client:
+      ipAddress: localhost
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      config:
+        enabled: true
+        format: YAML
+        prefix: explosed
+        defaultContext: ${spring.application.name}
+        profileSeparator: ','
+        data-key: node2

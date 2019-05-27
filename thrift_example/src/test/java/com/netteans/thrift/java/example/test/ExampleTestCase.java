@@ -39,7 +39,7 @@ public class ExampleTestCase {
 
     @Test
     public void test() {
-        ExpDomain quest = exampleClient.quest("quit");
+        ExpDomain quest = exampleClient.quest("error");
         try {
             logger.debug("case in testcase {}", exampleConfigure.objectMapper().writeValueAsString(quest));
             logger.debug("{}", "justice");

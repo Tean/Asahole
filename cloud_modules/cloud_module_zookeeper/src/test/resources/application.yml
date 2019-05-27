@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      username: netteans@gmail.com
+      password: tean198512
+      label: master
+      name: backend
+      profile: test
+      server:
+        git:
+          search-paths: /remote_config_files/{application}
+          uri: https://github.com/Tean/Asahole

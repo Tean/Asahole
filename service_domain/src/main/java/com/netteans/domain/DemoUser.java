@@ -27,6 +27,8 @@ public class DemoUser {
     @Email
     private String email;
 
+    private String serviceInstance;
+
     public String getName() {
         return name;
     }
@@ -49,6 +51,14 @@ public class DemoUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getServiceInstance() {
+        return serviceInstance;
+    }
+
+    public void setServiceInstance(String serviceInstance) {
+        this.serviceInstance = serviceInstance;
     }
 
     @Override

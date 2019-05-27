@@ -1,0 +1,19 @@
+server:
+  port: 8901
+  address: 0.0.0.0
+  sessionTimeout: 15
+  context-path: /
+  tomcat:
+    basedir: ./tmp
+    accesslog:
+      buffered: true
+      directory: ./logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+

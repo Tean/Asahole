@@ -1,0 +1,7 @@
+git:
+  version: 1.0.0-SNAPSHOT
+server:
+  port: 8901
+spring:
+  profiles:
+    active: remote

@@ -17,14 +17,17 @@ public class HelloServiceHandler implements HelloService.Iface {
 
     public ExpDomain answer() throws TException {
         ExpDomain expDomain;
+        String message = "no error";
         if (question.equalsIgnoreCase("quit")) {
             expDomain = new ExpDomain((byte) 0x00);
             expDomain.domainString = "exit";
             return expDomain;
         } else if (question.equalsIgnoreCase("error")) {
+            message = "fatal error";
             throw new TException("Error test");
         }
         expDomain = new ExpDomain((byte) 0x01);
+        expDomain.domainString = message;
 
         return expDomain;
     }

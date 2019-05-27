@@ -1,5 +1,6 @@
-#必须有bootstrap.yml,否则不能加载spring cloud config server 配置
-
+#必须有bootstrap.yml,否则不能加载spring cloud backend server 配置
+server:
+  port: 8808
 feign:
   hystrix:
     enabled: true
@@ -10,6 +11,8 @@ hystrix:
   command:
     default:
       execution:
+        timeout:
+          enable: false
         isolation:
           thread:
             timeoutInSeconds: 10
@@ -17,4 +20,4 @@ management:
   endpoints:
     web:
       exposure:
-          include: hystrix.stream, info, health
+          include: hystrix.stream, info, health, turbine.stream

@@ -1,0 +1,35 @@
+server:
+  port: 8901
+spring:
+  application:
+    name: configService
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      enabled: true
+      config:
+        enabled: true  #默认是true --
+        format: YAML  # 表示consul上面文件的格式 有四种 YAML PROPERTIES KEY-VALUE FILES
+        data-key: configuration  #表示consul上面的KEY值(或者说文件的名字) 默认是data
+
+#    zookeeper:
+#      connect-string: localhost:2181
+#      discovery:
+#        instanceHost: localhost
+#        instancePort: ${server.port}
+#        root: scconfig
+#        defaultContext: sccli
+#        enabled: true
+#        register: true
+#        profileSeparator: \,
+#    backend:
+#      username: netteans@gmail.com
+#      password: tean198512
+#      label: master
+#      name: configService
+#      profile: test
+#      server:
+#        git:
+#          search-paths: /remote_config_files/{application}
+#          uri: https://github.com/Tean/Asahole

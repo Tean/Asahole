@@ -1,7 +1,9 @@
 package com.netteans.cloud.exposed.service;
 
+import com.netteans.cloud.exposed.service.config.RemoteConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -13,26 +15,22 @@ public class FeignConotrller {
     @Autowired
     private FeignService feignService;
 
-    @Value("${version}")
-    private String version;
+    @Autowired
+    private RemoteConfig remoteConfig;
 
-    @Value("${git.version}")
-    private String git;
-
-    @Value("${server.port}")
-    private String port;
-
-    @Value("${spring.profiles.active}")
-    private String profiles;
-
-    @RequestMapping(value = {"/get/{id}", "/get"}, method = {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = {"/id/{id}", "/id"}, method = {RequestMethod.GET, RequestMethod.DELETE})
     public Object remoteInstance(@PathVariable Integer id) {
-        return feignService.inst(id);
+        return feignService.byId(id);
+    }
+
+    @RequestMapping(value = {"/name/{name}", "/name"}, method = {RequestMethod.GET, RequestMethod.DELETE})
+    public Object remoteInstance(@PathVariable String name) {
+        return feignService.byName(name);
     }
 
     @GetMapping(value = "/instance")
     public Object instance() {
-        return INSTANCE_UUID.toString() + " serve @ port " + port + " profiles: " + profiles + " git: " + git + " ver: " + version;
+        return INSTANCE_UUID.toString() + " serve @ port " + remoteConfig.getPort() + " git: " + remoteConfig.getGit() + " ver: " + remoteConfig.getVersion();
     }
 
     @GetMapping(value = "/timeout")

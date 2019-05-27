@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "service-zookeeper", path = "/", fallbackFactory = FallBackMethodsFactory.class)
+@FeignClient(value = "appback", path = "/", fallbackFactory = FallBackMethodsFactory.class)
 public interface FeignService {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    Object inst(@PathVariable("id") Integer id);
+    Object byId(@PathVariable("id") Integer id);
+
+    @RequestMapping(value = "/get/name/{name}", method = RequestMethod.GET)
+    Object byName(@PathVariable("name") String name);
 
     @RequestMapping(value = "/timeout", method = RequestMethod.GET)
     Object timeout();
@@ -29,15 +32,22 @@ class FallBackMethodsFactory implements FallbackFactory<FeignService> {
 
     @Override
     public FeignService create(Throwable throwable) {
+        DemoUser demoUser = new DemoUser();
+        demoUser.setEmail("timeout");
+        demoUser.setPassword("timeout");
+        demoUser.setName("timeout");
+        demoUser.setServiceInstance("timeout");
         return new FeignService() {
 
             @Override
-            public ResponseEntity inst(Integer id) {
+            public ResponseEntity byId(Integer id) {
                 logger.error("inst {} fallback", this);
-                DemoUser demoUser = new DemoUser();
-                demoUser.setEmail("timeout");
-                demoUser.setPassword("timeout");
-                demoUser.setName("timeout");
+                return new ResponseEntity(demoUser, HttpStatus.GATEWAY_TIMEOUT);
+            }
+
+            @Override
+            public Object byName(String name) {
+                logger.error("inst {} fallback", this);
                 return new ResponseEntity(demoUser, HttpStatus.GATEWAY_TIMEOUT);
             }
 

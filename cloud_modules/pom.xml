@@ -9,19 +9,35 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 
         <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
         <spring.cloud.version>Greenwich.M2</spring.cloud.version>
     </properties>
 
     <modules>
-        <module>discovery_zookeeper_module</module>
         <module>broker_feign_module</module>
-        <module>cloud_config_server_module</module>
-        <module>cloud_config_client_module</module>
+        <module>cloud_module_consul</module>
+        <module>cloud_module_zookeeper</module>
     </modules>
 
     <dependencyManagement>

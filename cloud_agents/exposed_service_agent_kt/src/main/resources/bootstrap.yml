@@ -1,5 +1,0 @@
-spring:
-  cloud:
-    zookeeper:
-      discovery:
-        root: /spring-cloud-service

@@ -1,0 +1,16 @@
+server:
+  sessionTimeout: 15
+  context-path: /
+  tomcat:
+    basedir: ./tmp
+    accesslog:
+      buffered: true
+      directory: ./logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log

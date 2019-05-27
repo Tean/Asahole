@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.netteans.cloud</groupId>
-            <artifactId>cloud_config_client_module</artifactId>
+            <artifactId>cloud_module_consul</artifactId>
             <version>${cloud.config.version}</version>
         </dependency>
         <dependency>

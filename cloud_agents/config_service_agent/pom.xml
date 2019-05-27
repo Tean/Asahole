@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.netteans.cloud</groupId>
-            <artifactId>cloud_config_server_module</artifactId>
+            <artifactId>cloud_module_consul</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

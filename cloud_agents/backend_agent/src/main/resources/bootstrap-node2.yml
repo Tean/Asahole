@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: appback
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        register: true
+        instance-id: ${spring.application.name}:${server.port}
+        enabled: true
+        health-check-path: /actuator/health
+        health-check-interval: 5s
+        service-name: ${spring.application.name}
+      config:
+        enabled: true
+        format: YAML
+        prefix: backend
+        defaultContext: ${spring.application.name}
+        profileSeparator: ','
+        data-key: node2
+  messages:
+    basename: i18n.messages

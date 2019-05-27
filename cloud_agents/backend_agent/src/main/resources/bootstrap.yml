@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: expApp-backend
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        register: true
+        instance-id: ${spring.application.name}:${server.port}
+        enabled: true
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        service-name: ${spring.application.name}
+  messages:
+    basename: i18n.messages

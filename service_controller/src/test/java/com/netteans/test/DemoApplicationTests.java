@@ -1,23 +1,23 @@
 package com.netteans.test;
 
-import com.netteans.backend.controller.Controller;
+import com.netteans.backend.controller.ExampleController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class DemoApplicationTests {
 
-    private Controller controller;
+    private ExampleController exampleController;
 
     @Before
     public void before() {
-        controller = new Controller();
+        exampleController = new ExampleController();
     }
 
     @Test
     public void contextLoads() {
-        controller.get(1);
-//        controller.getByName("");
+        exampleController.get(1);
+//        exampleController.getByName("");
     }
 
     @After

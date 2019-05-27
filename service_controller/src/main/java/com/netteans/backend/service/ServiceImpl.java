@@ -16,6 +16,7 @@ public class ServiceImpl implements IService {
         user.setName(String.format("{id:%s}", id));
         user.setPassword("id demo");
         user.setEmail(INSTANCE_UUID + "@de.mo");
+        user.setServiceInstance(this.toString());
         return user;
     }
 
@@ -25,6 +26,7 @@ public class ServiceImpl implements IService {
         user.setName(String.format("{name:%s}", name));
         user.setPassword("name demo");
         user.setEmail(INSTANCE_UUID + "@de.mo");
+        user.setServiceInstance(this.toString());
         return user;
     }
 }
