@@ -54,7 +54,7 @@
     <modules>
         <module>log_module</module>
         <module>test_module</module>
-        <module>config_module</module>
+        <module>swagger_module</module>
         <module>valid_module</module>
         <module>request_log_module</module>
     </modules>
@@ -62,7 +62,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>com.netteans.common</groupId>
                 <artifactId>log_module</artifactId>
@@ -75,7 +74,7 @@
             </dependency>
             <dependency>
                 <groupId>com.netteans.common</groupId>
-                <artifactId>config_module</artifactId>
+                <artifactId>swagger_module</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

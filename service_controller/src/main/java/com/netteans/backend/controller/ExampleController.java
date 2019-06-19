@@ -95,7 +95,7 @@ public class ExampleController {
             @PathVariable("name")
                     String name
     ) {
-        if(name.equalsIgnoreCase("timeout") || name.equalsIgnoreCase("sleep")){
+        if (name.equalsIgnoreCase("timeout") || name.equalsIgnoreCase("sleep")) {
             try {
                 TimeUnit.SECONDS.sleep(30);
             } catch (InterruptedException e) {
@@ -129,12 +129,31 @@ public class ExampleController {
     ) {
     }
 
-    @RequestMapping(value = {"/timeout"})
+    @RequestMapping(value = {"/timeout/{time}"})
     @ApiOperation(value = "测试超时")
+    @ApiResponses(
+            {
+                    @ApiResponse(code = 204, message = "成功"),
+                    @ApiResponse(code = 205, message = "成功"),
+                    @ApiResponse(code = 401, message = "未认证"),
+                    @ApiResponse(code = 403, message = "禁止的"),
+                    @ApiResponse(code = 405, message = "失败"),
+            }
+    )
     public Integer timeout(
+            @ApiParam(
+                    defaultValue = "30",
+                    allowEmptyValue = true,
+                    name = "测试超时",
+                    value = "测试超时"
+            )
+            @PathVariable(required = false)
+                    Integer time
     ) throws InterruptedException {
+        if(time == null)
+            time = 30;
         int i = new Random().nextInt();
-        TimeUnit.SECONDS.sleep(30);
+        TimeUnit.SECONDS.sleep(time);
         return i;
     }
 }

@@ -2,8 +2,6 @@ package com.netteans.cloud.exposed.service;
 
 import com.netteans.cloud.exposed.service.config.RemoteConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -33,8 +31,8 @@ public class FeignConotrller {
         return INSTANCE_UUID.toString() + " serve @ port " + remoteConfig.getPort() + " git: " + remoteConfig.getGit() + " ver: " + remoteConfig.getVersion();
     }
 
-    @GetMapping(value = "/timeout")
-    public Object timeoutTest() {
-        return feignService.timeout();
+    @GetMapping(value = "/timeout/{time}")
+    public Object timeoutTest(@PathVariable int time) {
+        return feignService.timeout(time);
     }
 }

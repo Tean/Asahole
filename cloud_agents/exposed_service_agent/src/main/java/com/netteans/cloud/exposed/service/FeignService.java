@@ -21,8 +21,8 @@ public interface FeignService {
     @RequestMapping(value = "/get/name/{name}", method = RequestMethod.GET)
     Object byName(@PathVariable("name") String name);
 
-    @RequestMapping(value = "/timeout", method = RequestMethod.GET)
-    Object timeout();
+    @RequestMapping(value = "/timeout/{time}", method = RequestMethod.GET)
+    Object timeout(@PathVariable("time") int time);
 }
 
 @Component
@@ -52,9 +52,9 @@ class FallBackMethodsFactory implements FallbackFactory<FeignService> {
             }
 
             @Override
-            public ResponseEntity timeout() {
+            public ResponseEntity timeout(int time) {
                 logger.info("timeout {} fallback", this);
-                return new ResponseEntity(Integer.MIN_VALUE, HttpStatus.GATEWAY_TIMEOUT);
+                return new ResponseEntity("quest: " + time, HttpStatus.GATEWAY_TIMEOUT);
             }
         };
     }

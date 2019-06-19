@@ -32,7 +32,7 @@
         <spring.webmvc.version>5.1.2.RELEASE</spring.webmvc.version>
         <log.module.version>1.0-SNAPSHOT</log.module.version>
         <test.module.version>1.0-SNAPSHOT</test.module.version>
-        <config.module.version>1.0-SNAPSHOT</config.module.version>
+        <swagger.module.version>1.0-SNAPSHOT</swagger.module.version>
         <service.domain.version>1.0-SNAPSHOT</service.domain.version>
     </properties>
 
@@ -50,8 +50,8 @@
         </dependency>
         <dependency>
             <groupId>com.netteans.common</groupId>
-            <artifactId>config_module</artifactId>
-            <version>${config.module.version}</version>
+            <artifactId>swagger_module</artifactId>
+            <version>${swagger.module.version}</version>
         </dependency>
         <dependency>
             <groupId>com.netteans</groupId>
