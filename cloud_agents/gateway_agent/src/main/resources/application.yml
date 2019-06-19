@@ -1,0 +1,15 @@
+server:
+  port: 9008
+spring:
+  cloud:
+    gateway:
+      # 配置所有路由的默认过滤器 这里配置的是gatewayFilter
+      default-filters:
+      routes:
+        - id: server-test  # 服务的id
+          uri: http://www.baidu.com/s?wd=
+          order: 0 #路由级别
+          predicates:
+            - Path=/baidu/**  #前缀
+          filters:
+            - StripPrefix=1 #去前缀 去几层

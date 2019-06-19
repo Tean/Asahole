@@ -22,6 +22,7 @@ public class RegData {
 
 class Prefix {
     final Map<String, Context> context = new TreeMap<>();
+    final Map<String, String> values = new TreeMap<>();
 
     public Context get(String contextName) {
         return context.get(contextName);
@@ -33,6 +34,19 @@ class Prefix {
 
     public Set<String> keys() {
         return this.context.keySet();
+    }
+
+
+    public String getValue(String valKey) {
+        return values.get(valKey);
+    }
+
+    public void putValue(String key, String value) {
+        this.values.put(key, value);
+    }
+
+    public Set<String> valueKeys() {
+        return this.values.keySet();
     }
 }
 

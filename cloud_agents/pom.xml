@@ -30,6 +30,7 @@
         <module>zkui_agent</module>
         <module>config_service_agent</module>
         <module>hystrix_monitor</module>
+        <module>gateway_agent</module>
     </modules>
 
 

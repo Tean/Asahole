@@ -49,14 +49,6 @@ public class AfterBootStrap implements CommandLineRunner {
                 for (File profile : profiles) {
                     String fname = profile.getName();
                     logger.info("{}>{}", pfxName, fname);
-                    String contextName = fname.substring(0, fname.indexOf('-'));
-                    String key = fname.substring(fname.indexOf('-') + 1, fname.lastIndexOf('.'));
-
-                    Context context = prefix.get(contextName);
-                    if (context == null) {
-                        context = new Context();
-                        prefix.put(contextName, context);
-                    }
 
                     InputStreamReader is = null;
                     try {
@@ -77,7 +69,22 @@ public class AfterBootStrap implements CommandLineRunner {
                         }
                     }
 
-                    context.put(key, stringBuilder.toString());
+                    String key = fname.substring(0, fname.lastIndexOf('.'));
+                    Context context = null;
+                    if (fname.indexOf('-') > 0) {
+                        String contextName = fname.substring(0, fname.indexOf('-'));
+                        key = fname.substring(fname.indexOf('-') + 1, fname.lastIndexOf('.'));
+
+                        context = prefix.get(contextName);
+                        if (context == null) {
+                            context = new Context();
+                            prefix.put(contextName, context);
+                        }
+                        context.put(key, stringBuilder.toString());
+                    } else {
+                        prefix.putValue(key, stringBuilder.toString());
+                    }
+
                     stringBuilder.delete(0, stringBuilder.length());
                 }
             }
@@ -100,6 +107,18 @@ public class AfterBootStrap implements CommandLineRunner {
                         logger.info("exists backend data: {}", kvKey);
                     }
                 });
+            });
+            prefix.valueKeys().forEach(valKey -> {
+                String kvKey = pfxkey + "/" + valKey;
+                String value = prefix.getValue(valKey);
+                Response<GetValue> val = consulClient.getKVValue(kvKey);
+                if (val.getValue() == null || force) {
+                    consulClient.setKVValue(kvKey, value);
+                    logger.info("new backend data: {}", kvKey);
+                } else {
+                    String v = val.getValue().getDecodedValue();
+                    logger.info("exists backend data: {}", kvKey);
+                }
             });
         });
     }

@@ -11,7 +11,7 @@ configuration:
       target: "SYSTEM_OUT"
       PatternLayout:
         charset: "UTF-8"
-        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=cyan, DEBUG=magenta, TRACE=blue} %style{%c{10}}{yellow} %style{[}{cyan}%style{%L}{blue}%style{]}{green} %M - %msg%n"
+        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=magenta, TRACE=green} %style{%c{10}}{green} %style{[}{cyan}%style{%L}{yellow}%style{]}{cyan} %M - %msg%n"
       Filters:
         ThresholdFilter:
         -
