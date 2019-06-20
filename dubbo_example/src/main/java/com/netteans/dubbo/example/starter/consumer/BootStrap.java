@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
+import java.util.concurrent.TimeUnit;
+
 @EnableAutoConfiguration
 public class BootStrap {
     private static final Logger logger = LoggerFactory.getLogger(BootStrap.class);
@@ -25,6 +27,11 @@ public class BootStrap {
         return args -> {
             logger.info(aservice.getOne("adDetail").toString());
             logger.info(aservice.getList().toString());
+            int i = 0;
+            while (true) {
+                TimeUnit.SECONDS.sleep(2);
+                logger.info("{}:{}", i++, aservice.getInstance());
+            }
         };
     }
 }

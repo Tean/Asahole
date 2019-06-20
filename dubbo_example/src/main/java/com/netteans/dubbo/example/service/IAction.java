@@ -6,4 +6,6 @@ public interface IAction<T> {
     T getOne(String actparam);
 
     List<T> getList();
+
+    String getInstance();
 }
