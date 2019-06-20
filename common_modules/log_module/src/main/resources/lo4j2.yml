@@ -14,29 +14,23 @@ configuration:
         pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=magenta, TRACE=green} %style{%c{10}}{green} %style{[}{cyan}%style{%L}{yellow}%style{]}{cyan} %M - %msg%n"
       Filters:
         ThresholdFilter:
-          -
-            level: "info"
+          - level: "info"
             onMatch: "ACCEPT"
             onMismatch: "NEUTRAL"
-          -
-            level: "debug"
+          - level: "debug"
             onMatch: "DENY"
             onMismatch: "NEUTRAL"
-          -
-            level: "warn"
+          - level: "warn"
             onMatch: "ACCEPT"
             onMismatch: "NETURAL"
-          -
-            level: "error"
+          - level: "error"
             onMatch: "ACCEPT"
             onMismatch: "NEUTRAL"
-          -
-            level: "history"
+          - level: "history"
             onMatch: "ACCEPT"
             onMismatch: "NEUTRAL"
     RollingRandomAccessFile:
-      -
-        name: "DebugFile"
+      - name: "DebugFile"
         filename: "logs/debug/debug.log"
         filepattern: "logs/debug/$${date:yyyy-MM}/log.%d{yyyyMMdd}.-%i.gz"
         PatternLayout:
@@ -44,8 +38,7 @@ configuration:
           pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
         Filters:
           ThresholdFilter:
-            -
-              level: "debug"
+            - level: "debug"
               onMatch: "ACCEPT"
               onMismatch: "DENY"
         Policies:
@@ -53,8 +46,7 @@ configuration:
           SizeBasedTriggeringPolicy:
             size: "4 MB"
           TimeBasedTriggeringPolicy: {}
-      -
-        name: "ErrorFile"
+      - name: "ErrorFile"
         filename: "logs/error/error.log"
         filepattern: "logs/error/$${date:yyyy-MM}/error.%d{yyyyMMdd}.-%i.gz"
         PatternLayout:
@@ -70,8 +62,7 @@ configuration:
           SizeBasedTriggeringPolicy:
             size: "4 MB"
           TimeBasedTriggeringPolicy: {}
-      -
-        name: "HistoryFile"
+      - name: "HistoryFile"
         filename: "logs/history/history.log"
         filepattern: "logs/history/$${date:yyyy-MM}/history.%d{yyyyMMdd}.-%i.gz"
         PatternLayout:
@@ -79,24 +70,19 @@ configuration:
           pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
         Filters:
           ThresholdFilter:
-            -
-              level: "trace"
+            - level: "trace"
               onMatch: "ACCEPT"
               onMismatch: "NEUTRAL"
-            -
-              level: "info"
+            - level: "info"
               onMatch: "ACCEPT"
               onMismatch: "NEUTRAL"
-            -
-              level: "debug"
+            - level: "debug"
               onMatch: "ACCEPT"
               onMismatch: "NEUTRAL"
-            -
-              level: "warn"
+            - level: "warn"
               onMatch: "ACCEPT"
               onMismatch: "NEUTRAL"
-            -
-              level: "error"
+            - level: "error"
               onMatch: "ACCEPT"
               onMismatch: "NEUTRAL"
         Policies:
@@ -134,8 +120,7 @@ configuration:
     logger:
       name: "history"
       AppenderRef:
-        -
-          ref: "HistoryFile"
+        - ref: "HistoryFile"
     #      -
     #        ref: "ErrorFile"
     #      -
@@ -143,9 +128,6 @@ configuration:
     root:
       level: "debug"
       AppenderRef:
-        -
-          ref: "Console"
-        -
-          ref: "DebugFile"
-        -
-          ref: "ErrorFile"
+        - ref: "Console"
+        - ref: "DebugFile"
+        - ref: "ErrorFile"
