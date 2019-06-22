@@ -1,0 +1,17 @@
+spring.cloud.stream:
+  kafka.streams.binder.configuration:
+    commit.interval.ms: 1000
+    default:
+      key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+  bindings:
+    input:
+      consumer.application-id: basic-word-count
+      destination: words
+    output:
+      destination: counts
+
+spring:
+  kafka:
+    streams:
+      application-id: kafkae

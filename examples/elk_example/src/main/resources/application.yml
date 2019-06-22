@@ -1,0 +1,5 @@
+server.port: 8188
+# Elasticsearch
+elasticsearch:
+  cluster:
+    address: localhost:9200
