@@ -1,5 +1,6 @@
 # Asahole
 
-## P1: discovery by zookeeper
-## P2: generator cloud config server & client, ps: must add bootstrap.yml/properties to get remote config from config server, can't work in application.yml/properties
-## p3: //TODO: add tsync lock 
+## P1: dubbo discovery by zookeeper
+## P2: spring cloud discvorery by consul
+## P3: reg config to consul fist
+## p4: //TODO: add tsync lock / MQ sub&pub etc
