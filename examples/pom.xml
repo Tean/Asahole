@@ -16,6 +16,7 @@
         <module>elk_example</module>
         <module>shiro_example</module>
         <module>kafka_example</module>
+        <module>mybatis_example</module>
     </modules>
     
     <build>
