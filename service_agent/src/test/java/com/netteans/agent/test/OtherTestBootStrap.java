@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Type;
 
 public class OtherTestBootStrap {
-    private final static Logger logger = LoggerFactory.getLogger(OtherTestBootStrap.class);
+    private static final Logger logger = LoggerFactory.getLogger(OtherTestBootStrap.class);
 
     @Test
     public void test() {

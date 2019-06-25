@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BeforBootStrap implements InitializingBean {
-    private final static Logger logger = LoggerFactory.getLogger(BeforBootStrap.class);
+    private static final Logger logger = LoggerFactory.getLogger(BeforBootStrap.class);
 
     @Override
     public void afterPropertiesSet() throws Exception {

@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
  * Created by Tean on 2016/10/9.
  */
 public class PasswordValidatorContext implements ConstraintValidator<Password, String> {
-    private final static Logger logger = LoggerFactory.getLogger(PasswordValidatorContext.class);
+    private static final Logger logger = LoggerFactory.getLogger(PasswordValidatorContext.class);
     private Password constraint;
 
     private IPasswordValidation passwordValidation;

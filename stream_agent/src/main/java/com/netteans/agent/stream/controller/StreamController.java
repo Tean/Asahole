@@ -26,7 +26,7 @@ import java.nio.Buffer;
 @Controller
 //@RequestLog
 public class StreamController {
-    private final static Logger logger = LoggerFactory.getLogger(StreamController.class);
+    private static final Logger logger = LoggerFactory.getLogger(StreamController.class);
 
     @RequestMapping(value = {"/"}, method = {RequestMethod.GET})
     @RequestLog

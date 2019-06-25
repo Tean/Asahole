@@ -17,6 +17,7 @@
         <module>shiro_example</module>
         <module>kafka_example</module>
         <module>mybatis_example</module>
+        <module>netty_example</module>
     </modules>
     
     <build>

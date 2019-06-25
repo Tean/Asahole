@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @RestController
 public class FeignConotrller {
-    private final static UUID INSTANCE_UUID = UUID.randomUUID();
+    private static final UUID INSTANCE_UUID = UUID.randomUUID();
 
     @Autowired
     private FeignService feignService;
