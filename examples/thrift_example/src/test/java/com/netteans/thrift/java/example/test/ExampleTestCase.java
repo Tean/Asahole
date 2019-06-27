@@ -14,6 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Bootstrap.class)
 public class ExampleTestCase {
@@ -46,5 +51,9 @@ public class ExampleTestCase {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void ntest(){
     }
 }

@@ -1,6 +1,7 @@
 package com.netteans.cloud.exposed.service;
 
 import com.netteans.domain.DemoUser;
+import feign.Headers;
 import feign.hystrix.FallbackFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.UUID;
+
 @FeignClient(value = "appback", path = "/", fallbackFactory = FallBackMethodsFactory.class)
 public interface FeignService {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    @Headers({"machine:"})
     Object byId(@PathVariable("id") Integer id);
 
     @RequestMapping(value = "/get/name/{name}", method = RequestMethod.GET)
