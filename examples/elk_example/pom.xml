@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>elk_example</artifactId>
+    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.version>3.8.1</maven.compiler.version>

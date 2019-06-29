@@ -18,6 +18,9 @@
         <module>kafka_example</module>
         <module>mybatis_example</module>
         <module>netty_example</module>
+        <module>dubbo_support_test_interface_only</module>
+        <module>dubbo_support_test_interface_only_provider</module>
+        <module>dubbo_support_test_interface_only_consumer</module>
     </modules>
     
     <build>

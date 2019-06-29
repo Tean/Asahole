@@ -16,9 +16,11 @@ import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 
 public class TestBootStrap {
+    private final Logger logger = LoggerFactory.getLogger("History");
 
     @Test
     public void test() {
+        logger.info("{}", this);
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
@@ -41,6 +43,18 @@ public class TestBootStrap {
         } finally {
 
         }
+    }
+
+    @Test
+    public void test2(){
+        C c = new C();
+        F f = c;
+        System.out.println(c.s);
+        System.out.println(f.getClass());
+
+        System.out.println(f.s);
+        System.out.println(f.getS());
+        System.out.println(f.getOvS());
     }
 }
 
@@ -66,6 +80,23 @@ class TestClientInitializer extends ChannelInitializer<SocketChannel> {
             pipeline.channel().close();
         }));
     }
+}
+
+class F {
+    public String s = "F";
+
+    public String getS(){return s;}
+
+    public String getOvS(){return s;}
+}
+
+class C extends F {
+    public String s = "C";
+
+    public String getS(){return s;}
+
+    @Override
+    public String getOvS(){return s;}
 }
 
 
