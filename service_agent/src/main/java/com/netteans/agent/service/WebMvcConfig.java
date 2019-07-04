@@ -17,8 +17,7 @@ import org.springframework.web.servlet.view.JstlView;
 import java.util.Locale;
 
 @SpringBootConfiguration
-@EnableWebMvc
-@ComponentScan(basePackages = "com.netteans")
+@ComponentScan(basePackages = {"com.netteans"})
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean

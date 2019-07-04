@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cglib.proxy.NoOp;
 import org.springframework.context.annotation.Bean;
 
 import java.lang.ref.WeakReference;
@@ -24,7 +25,7 @@ public class BootStrap {
 
     @Bean
     ApplicationRunner ar() {
-        ConcurrentHashMap<String, String> vvm = new ConcurrentHashMap<>(48);
+        ConcurrentHashMap<String, String> vvm = new ConcurrentHashMap<>(10); //capacity 决定size为比capacity大的最小的2的n次幂
         vvm.put("0", "0");
         vvm.put("1", "1");
         vvm.put("2", "2");

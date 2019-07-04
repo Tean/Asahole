@@ -4,13 +4,21 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class OtherTestBootStrap {
     private static final Logger logger = LoggerFactory.getLogger(OtherTestBootStrap.class);
 
     @Test
     public void test() {
+        Object k = "1";
+        Object v = "2h";
+        ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+        concurrentHashMap.put(k, k);
+        concurrentHashMap.put(v, k);
         Select select = new Select() {
 
             @Override
@@ -54,7 +62,7 @@ public class OtherTestBootStrap {
                         new Equal<String>(() -> "what", "xxx"))
                         .and(
                                 new Or(new RLike(() -> "what", "ask")).and(new And(new LLike(() -> "what", "qqq")))
-                        )
+                        ).or(new And(new Equal(() -> "what", "say")))
         ).toSql());
     }
 }
@@ -215,7 +223,7 @@ class Or extends AbstractCalc {
 interface IWhere<C extends AbstractCalc> {
     String LABEL = "where";
 
-    C calc();
+    List<C> calc();
 
     String toSql();
 
@@ -226,7 +234,7 @@ interface IWhere<C extends AbstractCalc> {
 
 class Where<C> implements IWhere {
 
-    AbstractCalc calc;
+    final List<AbstractCalc> calc = new ArrayList<>();
     final AbstractCondition condition;
     private String nLabel;
 
@@ -235,27 +243,34 @@ class Where<C> implements IWhere {
     }
 
     @Override
-    public AbstractCalc calc() {
-        return this.calc;
+    public List<AbstractCalc> calc() {
+        final List<AbstractCalc> ac = Arrays.asList(calc.toArray(new AbstractCalc[0]));
+        return ac;
     }
 
     @Override
     public String toSql() {
-        return this.condition.toSql() + (this.nLabel == null ? "" : IQuery.SPACE + this.nLabel) + IQuery.SPACE + calc.toSql();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.condition.toSql() + (this.nLabel == null ? "" : IQuery.SPACE + this.nLabel) + IQuery.SPACE);
+        for (AbstractCalc ac : calc) {
+            stringBuilder.append(ac.toSql());
+            stringBuilder.append(IQuery.SPACE);
+        }
+        return stringBuilder.toString();
     }
 
     @Override
     public Where<C> and(AbstractCalc and) {
-        this.calc = and;
+        this.calc.add(and);
         this.nLabel = "And";
         return this;
     }
 
     @Override
     public IWhere or(AbstractCalc or) {
-        this.calc = or;
+        this.calc.add(or);
         this.nLabel = "Or";
-        return null;
+        return this;
     }
 }
 

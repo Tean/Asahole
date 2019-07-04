@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-@EnableAutoConfiguration
 @SpringBootApplication
 public class Bootstrap {
     private static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
