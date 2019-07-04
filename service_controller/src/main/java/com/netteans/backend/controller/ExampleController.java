@@ -13,8 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +38,22 @@ public class ExampleController {
     @Value("{id.litter}")
     private String litter;
 
+    @Autowired
+    private HttpServletRequest request;
+
     private static UUID INSTANCE_UUID = UUID.randomUUID();
+
+    private ThreadLocal<Integer> localCount = new ThreadLocal<>();
+    private int gcount = 0;
+
+    @ModelAttribute
+    public void init() {
+        localCount.set(0);
+    }
+
+    public ExampleController() {
+        logger.info("Construct Controller");
+    }
 
     @RequestMapping(value = {"/get/{id}", "/get"}, method = {RequestMethod.GET, RequestMethod.DELETE})
     @ApiOperation(value = "测试user")
@@ -150,11 +167,27 @@ public class ExampleController {
             @PathVariable(required = false)
                     Integer time
     ) throws InterruptedException {
-        if(time == null)
+        if (time == null)
             time = 30;
         int i = new Random().nextInt();
         TimeUnit.SECONDS.sleep(time);
         return i;
+    }
+
+    @RequestMapping(value = "/request", method = RequestMethod.GET)
+    public String request() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        this.request.getReader().lines().forEach(s -> {
+            stringBuilder.append(s).append("\r\n");
+        });
+        return stringBuilder.toString();
+    }
+
+    @RequestMapping(value = "/count", method = RequestMethod.GET)
+    public String getCount() {
+        localCount.set(localCount.get() + 1);
+        gcount++;
+        return "localCount:" + localCount.get() + " - gCount:" + gcount;
     }
 }
 

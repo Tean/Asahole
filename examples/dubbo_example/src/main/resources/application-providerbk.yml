@@ -13,6 +13,7 @@ dubbo:
   # Dubbo Protocol
   protocol:
     name: dubbo
+    serialization: fastjson
     ## Random port
     port: -1
 

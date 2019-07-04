@@ -18,6 +18,9 @@ public class AfterBootStrap implements CommandLineRunner {
     @Value("${server.port}")
     private String port;
 
+    @Autowired
+    WebMvcConfig config;
+
     @Override
     public void run(String... args) throws Exception {
         String[] profiles = context.getEnvironment().getActiveProfiles();

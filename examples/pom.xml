@@ -21,6 +21,8 @@
         <module>dubbo_support_test_interface_only</module>
         <module>dubbo_support_test_interface_only_provider</module>
         <module>dubbo_support_test_interface_only_consumer</module>
+        <module>weakmonitor_example</module>
+        <module>gof_example</module>
     </modules>
     
     <build>
