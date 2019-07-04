@@ -11,6 +11,9 @@ embedded:
     port: 2181
 
 dubbo:
+  protocol:
+    name: dubbo
+    serialization: fastjson
   registry:
     address: zookeeper://127.0.0.1:${embedded.zookeeper.port}
     file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache

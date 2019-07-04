@@ -27,7 +27,7 @@ public class ElasticsearchConfig {
      * @return
      */
     @Bean
-    public RestHighLevelClient restClient() {
+    public RestHighLevelClient restHighLevelClient() {
         logger.info("es rest client init");
         List<Node> nodes = new ArrayList<>();
         String[] clusterAddresses = clusterAddress.split(",");
