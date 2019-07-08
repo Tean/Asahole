@@ -24,6 +24,6 @@ public interface ExampleMessageMapperExt {
             "from example_message",
             "where id = #{id,jdbcType=INTEGER}"
     })
-    @ResultMap("BaseResultMap")
+    @ResultMap("com.netteans.example.mybatis.dao.mapper.ExampleUserMapper.BaseResultMap")
     ExampleMessage selectByPrimaryKey(Integer id);
 }

@@ -1,5 +1,6 @@
 package com.netteans.example.mybatis;
 
+import com.netteans.example.mybatis.service.ExampleService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class BootStrap {
     @Autowired
     DataSource ds;
 
+    @Autowired
+    ExampleService exampleService;
+
     public static void main(String[] args) {
         System.out.println("args:" + Arrays.toString(args));
         SpringApplication.run(BootStrap.class, args);
@@ -44,6 +48,7 @@ public class BootStrap {
                         connection = ds.getConnection();
                         System.out.println(connection.getClass().getName() + "@" + connection);
                         connection.close();
+                        System.out.println(exampleService.getUser(1));
                         TimeUnit.SECONDS.sleep(1);
                     } catch (SQLException | InterruptedException e) {
                         e.printStackTrace();

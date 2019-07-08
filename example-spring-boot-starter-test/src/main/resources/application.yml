@@ -1,0 +1,4 @@
+com.netteans: # prefix ,step: make XXXAutoConfiguration & addto META-INF/spring.factories then ConditionOn class XXXProperties the inject XXX
+  name: Tean
+  mail: netteans@163.com
+  phone: 1511803267
