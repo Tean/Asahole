@@ -24,4 +24,12 @@ public class ExampleService {
     public ExampleMessage getMessage(Integer id) {
         return messageMapperExt.selectByPrimaryKey(id);
     }
+
+    public int updateMessage(ExampleMessage exampleMessage) {
+        return messageMapperExt.updateByPrimaryKeyIdem(exampleMessage);
+    }
+
+    public int addUser(ExampleUser exampleUser) {
+        return userMapper.insertSelective(exampleUser);
+    }
 }

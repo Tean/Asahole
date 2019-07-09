@@ -32,11 +32,11 @@ USE `mybatis_example`;
 --
 
 CREATE TABLE `example_message` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` smallint(6) NOT NULL,
   `message_id` varchar(30) NOT NULL,
   `message_body` varchar(200) NOT NULL,
-  `version` int(11) NOT NULL,
+  `version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -47,11 +47,11 @@ CREATE TABLE `example_message` (
 --
 
 CREATE TABLE `example_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `salt` varchar(30) NOT NULL,
-  `version` int(11) NOT NULL,
+  `version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 COMMIT;

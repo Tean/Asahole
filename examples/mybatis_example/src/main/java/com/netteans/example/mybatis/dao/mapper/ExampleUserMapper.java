@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 public interface ExampleUserMapper {
@@ -46,11 +47,12 @@ public interface ExampleUserMapper {
      * @mbg.generated
      */
     @Insert({
-        "insert into example_user (id, name, ",
-        "password, salt)",
-        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
-        "#{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})"
+        "insert into example_user (name, password, ",
+        "salt, version)",
+        "values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, ",
+        "#{salt,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})"
     })
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(ExampleUser record);
 
     /**
@@ -77,7 +79,7 @@ public interface ExampleUserMapper {
      */
     @Select({
         "select",
-        "id, name, password, salt",
+        "id, name, password, salt, version",
         "from example_user",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -118,7 +120,8 @@ public interface ExampleUserMapper {
         "update example_user",
         "set name = #{name,jdbcType=VARCHAR},",
           "password = #{password,jdbcType=VARCHAR},",
-          "salt = #{salt,jdbcType=VARCHAR}",
+          "salt = #{salt,jdbcType=VARCHAR},",
+          "version = #{version,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(ExampleUser record);

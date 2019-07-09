@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 public interface ExampleMessageMapper {
@@ -27,11 +28,12 @@ public interface ExampleMessageMapper {
      * @mbg.generated
      */
     @Insert({
-        "insert into example_message (id, type, ",
-        "message_id, message_body)",
-        "values (#{id,jdbcType=INTEGER}, #{type,jdbcType=SMALLINT}, ",
-        "#{messageId,jdbcType=VARCHAR}, #{messageBody,jdbcType=VARCHAR})"
+        "insert into example_message (type, message_id, ",
+        "message_body, version)",
+        "values (#{type,jdbcType=SMALLINT}, #{messageId,jdbcType=VARCHAR}, ",
+        "#{messageBody,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})"
     })
+    @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
     int insert(ExampleMessage record);
 
     /**
@@ -50,7 +52,7 @@ public interface ExampleMessageMapper {
      */
     @Select({
         "select",
-        "id, type, message_id, message_body",
+        "id, type, message_id, message_body, version",
         "from example_message",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -75,7 +77,8 @@ public interface ExampleMessageMapper {
         "update example_message",
         "set type = #{type,jdbcType=SMALLINT},",
           "message_id = #{messageId,jdbcType=VARCHAR},",
-          "message_body = #{messageBody,jdbcType=VARCHAR}",
+          "message_body = #{messageBody,jdbcType=VARCHAR},",
+          "version = #{version,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(ExampleMessage record);

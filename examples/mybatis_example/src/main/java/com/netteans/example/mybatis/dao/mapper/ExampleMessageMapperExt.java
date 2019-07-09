@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-public interface ExampleMessageMapperExt {
+public interface ExampleMessageMapperExt extends ExampleMessageMapper{
 
     @Update({
             "update example_message",
