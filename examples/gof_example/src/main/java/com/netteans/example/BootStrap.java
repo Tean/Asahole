@@ -1,10 +1,12 @@
 package com.netteans.example;
 
+import com.netteans.example.factory.*;
+import com.netteans.example.factory.contract.ISampleFactory;
+import com.netteans.example.factory.contract.SampleInterface;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class BootStrap {
 
@@ -12,11 +14,33 @@ public class BootStrap {
 //        testSingleton();
 //        testPrototype();
 //        testFactoryMethod();
-//        testAbstractFactoryMethod();
+        testAbstractFactoryMethod();
 //        testBuilder();
 //        testProxy();
 //        testAdapter();
-        testBridge();
+//        testBridge();
+        FutureTask<String> taskFuture = new FutureTask<String>(() -> {
+            TimeUnit.SECONDS.sleep(5);
+            return "done";
+        });
+
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(4, 4, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+        executor.execute(taskFuture);
+
+        try {
+            System.out.println(System.currentTimeMillis());
+            String s = null;
+            try {
+                s = taskFuture.get(3, TimeUnit.SECONDS);
+            } catch (TimeoutException e) {
+                e.printStackTrace();
+            }
+            System.out.println(System.currentTimeMillis());
+            System.out.println(s);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void testBridge() {
@@ -57,8 +81,31 @@ public class BootStrap {
     }
 
     private static void testAbstractFactoryMethod() {
-        System.out.println(AbstractFactoryMethod.getSuit("animal").getSuit().getDetail());
-        System.out.println(AbstractFactoryMethod.getSuit("sj").getSuit().getDetail());
+        SampleGroupFactory integerInvokeFactoryGroup = SampleGroupFactory.getInstance();
+        IntegerInvokeFactory integerInvokeFactory = integerInvokeFactoryGroup.getSomeSampleFactory(IntegerInvokeFactory.class);
+        IntegerSampleImpl integerSampleImpl = integerInvokeFactory.getSampleImpl();
+        Integer intSample = integerSampleImpl.getSample();
+        integerSampleImpl.dosth(1);
+
+        SampleGroupFactory stringInvokeFactoryGroup = SampleGroupFactory.getInstance();
+        StringInvokeFactory stringInvokeFactory = stringInvokeFactoryGroup.getSomeSampleFactory(StringInvokeFactory.class);
+        StringSampleImpl stringSampleImpl = stringInvokeFactory.getSampleImpl();
+        String stringSample = stringSampleImpl.getSample();
+        stringSampleImpl.dosth("ohooh");
+
+        SampleGroupFactory objInvokerFactoryGroup = SampleGroupFactory.getInstance();
+        ISampleFactory<ObjectSampleImpl> objectSampleFactory = objInvokerFactoryGroup.getSomeSampleFactory(new ObjectInvokeFactory(), ObjectInvokeFactory.class);
+        ObjectSampleImpl objectSampleImpl = objectSampleFactory.getSampleImpl();
+        SamplePojo pojoSample = objectSampleImpl.getSample();
+        objectSampleImpl.dosth(new SamplePojo().setAge(18).setName("YoYo").setGreek("yoyo").setSex(false));
+        objectSampleImpl.dosth(new SamplePojo().setAge(28).setName("DaYoYo").setGreek("yoyoyoyo").setSex(false));
+
+
+        System.out.println(integerInvokeFactoryGroup.equals(stringInvokeFactoryGroup)); //true
+
+
+        ISuit<Animal> animal = AbstractFactoryMethod.getSuit("animal").getSuit(Animal.class);
+        System.out.println(animal);
     }
 
     private static void testFactoryMethod() {

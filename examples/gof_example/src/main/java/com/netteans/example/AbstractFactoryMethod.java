@@ -2,6 +2,10 @@ package com.netteans.example;
 
 public class AbstractFactoryMethod {
 
+    public static IFactory getSuit() {
+        return getSuit("animal");
+    }
+
     public static IFactory getSuit(String factname) {
         if (factname.equalsIgnoreCase("animal")) {
             return new AnimalFactory("AnimalFactory");
@@ -13,7 +17,7 @@ public class AbstractFactoryMethod {
 
 interface IFactory<P extends ISuit> {
 
-    P getSuit();
+    <ZP extends P> ZP getSuit(Class<? extends ZP> suitclass);
 }
 
 interface ISuit<S extends ISuit> {
@@ -22,7 +26,11 @@ interface ISuit<S extends ISuit> {
     S from(String factname);
 }
 
-class Animal implements ISuit<Animal> {
+interface IRcrit<R extends IRcrit> {
+    String getRcru();
+}
+
+class Animal implements ISuit<Animal>, IRcrit<Animal> {
     private String a = "animal ";
 
     @Override
@@ -35,9 +43,14 @@ class Animal implements ISuit<Animal> {
         if (a.endsWith(" ")) a += "from " + factname;
         return this;
     }
+
+    @Override
+    public String getRcru() {
+        return "animal Rcru";
+    }
 }
 
-class Plant implements ISuit<Plant> {
+class Plant implements ISuit<Plant>, IRcrit<Plant> {
     private String a = "plant ";
 
     @Override
@@ -50,6 +63,11 @@ class Plant implements ISuit<Plant> {
         if (a.endsWith(" ")) a += "from " + factname;
         return this;
     }
+
+    @Override
+    public String getRcru() {
+        return "plant rcru";
+    }
 }
 
 class AnimalFactory implements IFactory<Animal> {
@@ -61,8 +79,13 @@ class AnimalFactory implements IFactory<Animal> {
     }
 
     @Override
-    public Animal getSuit() {
-        return new Animal().from(factname);
+    public <ZP extends Animal> ZP getSuit(Class<? extends ZP> suitclass) {
+        Animal animal = new Animal().from(factname);
+        boolean isSuit = suitclass.isInstance(animal);
+        if (isSuit)
+            return suitclass.cast(animal);
+        else
+            return null;
     }
 }
 
@@ -75,7 +98,12 @@ class PlantFactory implements IFactory<Plant> {
     }
 
     @Override
-    public Plant getSuit() {
-        return new Plant().from(factname);
+    public <ZP extends Plant> ZP getSuit(Class<? extends ZP> suitclass) {
+        Plant plant = new Plant().from(factname);
+        boolean isSuit = suitclass.isInstance(plant);
+        if (isSuit)
+            return suitclass.cast(plant);
+        else
+            return null;
     }
 }
