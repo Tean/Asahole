@@ -1,10 +1,10 @@
 package com.netteans.example.mybatis;
 
-import com.netteans.example.mybatis.dao.model.ExampleMessage;
 import com.netteans.example.mybatis.dao.model.ExampleUser;
 import com.netteans.example.mybatis.service.ExampleService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
+import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +35,9 @@ public class BootStrap {
     @Autowired
     ExampleService exampleService;
 
+    @Autowired
+    MybatisProperties mybatisProperties;
+
     public static void main(String[] args) {
         logger.info("{}", "args:" + Arrays.toString(args));
         SpringApplication.run(BootStrap.class, args);
@@ -49,7 +52,7 @@ public class BootStrap {
         return args -> {
             logger.info("{}", "CommandLineRunner");
             threadPoolExecutor.execute(() -> {
-                while (true) {
+                while (Thread.currentThread().isAlive()) {
                     logger.info("{}", "args:" + Arrays.toString(args));
                     logger.info("{}", ds.getClass().getName());
                     Connection connection;

@@ -8,3 +8,4 @@ spring.datasource:
 mybatis:
 #  config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis-mapper/*.xml #mapper.xml location
+  configuration.jdbc-type-for-null: 'null'
