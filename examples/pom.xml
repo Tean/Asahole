@@ -25,6 +25,7 @@
         <module>weakmonitor_example</module>
         <module>gof_example</module>
         <module>example-spring-boot-starter</module>
+        <module>loader_example</module>
     </modules>
     
     <build>
