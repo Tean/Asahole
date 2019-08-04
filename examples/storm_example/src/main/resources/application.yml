@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: storm-demo
+
+logging.config: classpath:log4j2-spring.yml

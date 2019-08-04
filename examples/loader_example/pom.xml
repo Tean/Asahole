@@ -16,5 +16,9 @@
             <groupId>com.netteans.common</groupId>
             <artifactId>log_module</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.netteans.common</groupId>
+            <artifactId>test_module</artifactId>
+        </dependency>
     </dependencies>
 </project>
