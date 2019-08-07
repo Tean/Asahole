@@ -31,7 +31,7 @@ public class BootStrap {
 
             TopologyBuilder topologyBuilder = new TopologyBuilder();
             topologyBuilder.setSpout("wordspout", new TestSpout(), 1);
-            topologyBuilder.setBolt("count", new CountBolt(), 2).fieldsGrouping("wordspout", new Fields("words"));
+            topologyBuilder.setBolt("count", new CountBolt(), 2).localOrShuffleGrouping("wordspout", "wordsflow");
 
             Config conf = new Config();
             conf.setDebug(false);

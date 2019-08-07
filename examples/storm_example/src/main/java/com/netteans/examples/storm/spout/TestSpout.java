@@ -46,13 +46,13 @@ public class TestSpout extends BaseRichSpout {
             }
         }
         String gstrs = got.toString();
-        logger.info("{}",gstrs);
-        this.collector.emit(new Values(gstrs));
+        logger.info("{}", gstrs);
+        this.collector.emit("wordsflow", new Values(gstrs));
         Utils.sleep(500);
     }
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) {
-        outputFieldsDeclarer.declare(new Fields("words"));
+        outputFieldsDeclarer.declareStream("wordsflow", new Fields("words"));
     }
 }
