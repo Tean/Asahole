@@ -11,7 +11,7 @@ public class LocaleService {
     @Autowired
     private MessageSource messageSource;
 
-    @Value("${valid.password.message:not fond}")
+    @Value("${valid.password.message:id.auth}")
     private String localeTest;
 
     @Value("${id.locale:0}")

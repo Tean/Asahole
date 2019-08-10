@@ -13,7 +13,7 @@ public class LocaleController {
     @Autowired
     LocaleService localeService;
 
-    @GetMapping("/")
+    @GetMapping(value = {"", "/"})
     public String getLocale() {
         return localeService.getLocale();
     }
