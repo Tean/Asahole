@@ -7,6 +7,6 @@ import com.netteans.example.factory.contract.ISampleFactory;
  */
 public class ObjectInvokeFactory implements ISampleFactory<ObjectSampleImpl> {
     public ObjectSampleImpl getSampleImpl() {
-        return new ObjectSampleImpl(new SamplePojo().setName("Tean").setAge(66).setGreek("wow").setSex(true));
+        return new ObjectSampleImpl(new SampleEntity().setName("Tean").setAge(66).setGreek("wow").setSex(true));
     }
 }
