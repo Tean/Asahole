@@ -17,7 +17,9 @@ public class ExampleService {
     private ExampleMessageMapperExt messageMapperExt;
 
     public ExampleUser getUser(Integer id) {
-        if (id == null) return null;
+        if (id == null) {
+            return null;
+        }
         return userMapper.selectByPrimaryKey(id);
     }
 

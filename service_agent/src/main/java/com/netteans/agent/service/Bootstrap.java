@@ -15,20 +15,20 @@ import java.io.File;
 
 @SpringBootApplication
 public class Bootstrap {
-    private static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+        private static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
 
-    public static void main(String[] args) {
-        try {
-            Class c = Class.forName("com.netteans.agent.service.Bootstrap");
-            Class c1 = Class.forName("com.netteans.agent.service.test1.ForName");
-            Class c2 = Class.forName("com.netteans.agent.service.test2.ForName");
-            logger.info(c.toString());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        public static void main(String[] args) {
+            try {
+                Class c = Class.forName("com.netteans.agent.service.Bootstrap");
+                Class c1 = Class.forName("com.netteans.agent.service.test1.ForName");
+                Class c2 = Class.forName("com.netteans.agent.service.test2.ForName");
+                logger.info(c.toString());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            logger.info("Bootstrap Run @ {}", new File("./").getAbsolutePath());
+            SpringApplication.run(Bootstrap.class, args);
         }
-        logger.info("Bootstrap Run @ {}", new File("./").getAbsolutePath());
-        SpringApplication.run(Bootstrap.class, args);
-    }
 
     @Autowired
     IServiceConfig serviceConfig;
