@@ -17,3 +17,4 @@ server:
       rotate: true
       suffix: .log
 
+spring.profiles.active: node1

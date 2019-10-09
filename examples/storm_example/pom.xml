@@ -9,28 +9,23 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>netty_example</artifactId>
+    <artifactId>storm_example</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.36.Final</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.netteans.common</groupId>
             <artifactId>log_module</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.netteans.common</groupId>
-            <artifactId>test_module</artifactId>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <version>1.2.2</version>
         </dependency>
     </dependencies>
+
 </project>

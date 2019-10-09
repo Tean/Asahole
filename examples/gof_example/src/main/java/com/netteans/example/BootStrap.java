@@ -2,7 +2,6 @@ package com.netteans.example;
 
 import com.netteans.example.factory.*;
 import com.netteans.example.factory.contract.ISampleFactory;
-import com.netteans.example.factory.contract.SampleInterface;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -96,9 +95,9 @@ public class BootStrap {
         SampleGroupFactory objInvokerFactoryGroup = SampleGroupFactory.getInstance();
         ISampleFactory<ObjectSampleImpl> objectSampleFactory = objInvokerFactoryGroup.getSomeSampleFactory(new ObjectInvokeFactory(), ObjectInvokeFactory.class);
         ObjectSampleImpl objectSampleImpl = objectSampleFactory.getSampleImpl();
-        SamplePojo pojoSample = objectSampleImpl.getSample();
-        objectSampleImpl.dosth(new SamplePojo().setAge(18).setName("YoYo").setGreek("yoyo").setSex(false));
-        objectSampleImpl.dosth(new SamplePojo().setAge(28).setName("DaYoYo").setGreek("yoyoyoyo").setSex(false));
+        SampleEntity pojoSample = objectSampleImpl.getSample();
+        objectSampleImpl.dosth(new SampleEntity().setAge(18).setName("YoYo").setGreek("yoyo").setSex(false));
+        objectSampleImpl.dosth(new SampleEntity().setAge(28).setName("DaYoYo").setGreek("yoyoyoyo").setSex(false));
 
 
         System.out.println(integerInvokeFactoryGroup.equals(stringInvokeFactoryGroup)); //true

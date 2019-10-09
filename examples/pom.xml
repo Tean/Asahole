@@ -26,6 +26,7 @@
         <module>gof_example</module>
         <module>example-spring-boot-starter</module>
         <module>loader_example</module>
+        <module>storm_example</module>
     </modules>
     
     <build>
@@ -48,11 +49,25 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+
+        <springboot.version>2.1.6.RELEASE</springboot.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
             <dependency>
                 <groupId>com.netteans.common</groupId>
                 <artifactId>log_module</artifactId>

@@ -32,10 +32,10 @@ public class ExampleController {
     @Autowired
     private IService service;
 
-    @Value("{id.auth}")
+    @Value("${id.auth:unbound}")
     private String auth;
 
-    @Value("{id.litter}")
+    @Value("${id.litter:unbound}")
     private String litter;
 
     @Autowired
@@ -71,7 +71,6 @@ public class ExampleController {
             @PathVariable(value = "id", required = false)
                     Integer id
     ) {
-        auth = new File("./").getAbsolutePath();
         logger.trace("trace @ controller test");
         logger.debug("debug @ controller test");
         logger.info("info @ controller test");

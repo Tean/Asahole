@@ -1,6 +1,6 @@
 package com.netteans.example.factory;
 
-public class SamplePojo {
+public class SampleEntity {
     String name;
     int age;
     boolean sex;
@@ -10,7 +10,7 @@ public class SamplePojo {
         return name;
     }
 
-    public SamplePojo setName(String name) {
+    public SampleEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -19,7 +19,7 @@ public class SamplePojo {
         return age;
     }
 
-    public SamplePojo setAge(int age) {
+    public SampleEntity setAge(int age) {
         this.age = age;
         return this;
     }
@@ -28,7 +28,7 @@ public class SamplePojo {
         return sex;
     }
 
-    public SamplePojo setSex(boolean sex) {
+    public SampleEntity setSex(boolean sex) {
         this.sex = sex;
         return this;
     }
@@ -37,7 +37,7 @@ public class SamplePojo {
         return greek;
     }
 
-    public SamplePojo setGreek(String greek) {
+    public SampleEntity setGreek(String greek) {
         this.greek = greek;
         return this;
     }
