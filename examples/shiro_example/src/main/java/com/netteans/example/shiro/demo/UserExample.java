@@ -26,6 +26,11 @@ public class UserExample {
         admin.setPassword("1234");
         admin.setRole("admin");
         userMap.put(admin.getName(), admin);
+        User acc = new User();
+        acc.setName("acc");
+        acc.setPassword("acc");
+        acc.setRole("admin");
+        userMap.put(acc.getName(), acc);
     }
 
     public User find(String username) {

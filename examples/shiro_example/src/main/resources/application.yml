@@ -16,3 +16,14 @@ server:
       request-attributes-enabled: false
       rotate: true
       suffix: .log
+
+spring.profiles.active: freqdebug
+
+---
+spring.profiles: debug
+app.scheduled.rate: 5000 #ms
+
+
+---
+spring.profiles: freqdebug
+app.scheduled.rate: 1000 #ms

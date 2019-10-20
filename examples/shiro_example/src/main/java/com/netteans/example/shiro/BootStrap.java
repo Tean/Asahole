@@ -1,14 +1,13 @@
 package com.netteans.example.shiro;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -18,7 +17,10 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 //@ComponentScans({@ComponentScan("com.netteans.example.shiro.controller")})
+@EnableScheduling
 public class BootStrap {
+    public static final Logger SCHEDULER = LoggerFactory.getLogger("scheduler");
+    public static final Logger HISTORY = LoggerFactory.getLogger("history");
 
     public static void main(String[] args) {
         SpringApplication.run(BootStrap.class, args);
@@ -45,6 +47,20 @@ public class BootStrap {
     }
 
     private IPy p = new Zpy();
+
+    @Scheduled(fixedRateString = "${app.scheduled.rate}")
+    public void schedule() {
+        SCHEDULER.trace("trace");
+        SCHEDULER.info("info");
+        SCHEDULER.debug("debug");
+        SCHEDULER.warn("warn");
+        SCHEDULER.error("error");
+        HISTORY.trace("trace");
+        HISTORY.info("info");
+        HISTORY.debug("debug");
+        HISTORY.warn("warn");
+        HISTORY.error("error");
+    }
 }
 
 class Py implements IPy {

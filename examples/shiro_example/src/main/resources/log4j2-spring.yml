@@ -4,36 +4,36 @@ configuration:
       name: "HISTORY"
       intLevel: "350"
   status: "OFF"
-  monitorInterval: "30"
+  monitorInterval: "5"
   appenders:
     Console:
-      name: "Console"
-      target: "SYSTEM_OUT"
-#      JsonLayout:
-#        compact: "true"
-#        locationInfo: "true"
-#        complete: "false"
-#        eventEol: "true"
-      PatternLayout:
-        charset: "UTF-8"
-        pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=magenta, TRACE=green} %style{%c{10}}{Reverse, green} %style{[}{cyan}%style{%L}{yellow}%style{]}{cyan} %style{%M}{green} - %msg%n"
-      Filters:
-        ThresholdFilter:
-          - level: "info"
-            onMatch: "ACCEPT"
-            onMismatch: "NEUTRAL"
-          - level: "debug"
-            onMatch: "x"
-            onMismatch: "NEUTRAL"
-          - level: "warn"
-            onMatch: "ACCEPT"
-            onMismatch: "NETURAL"
-          - level: "error"
-            onMatch: "ACCEPT"
-            onMismatch: "NEUTRAL"
-          - level: "history"
-            onMatch: "ACCEPT"
-            onMismatch: "NEUTRAL"
+      - name: "Console"
+        target: "SYSTEM_OUT"
+        #      JsonLayout:
+        #        compact: "true"
+        #        locationInfo: "true"
+        #        complete: "false"
+        #        eventEol: "true"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=magenta, TRACE=green} %style{%c{10}}{Reverse, green} %style{[}{cyan}%style{%L}{yellow}%style{]}{cyan} %style{%M}{green} - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "info"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "debug"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+            - level: "warn"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "error"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "history"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
     RollingRandomAccessFile:
       - name: "DebugFile"
         filename: "logs/debug/debug.log"
@@ -46,6 +46,22 @@ configuration:
             - level: "debug"
               onMatch: "ACCEPT"
               onMismatch: "DENY"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+      - name: "InfoFile"
+        filename: "logs/info/info.log"
+        filepattern: "logs/info/$${date:yyyy-MM}/info.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            level: "info"
+            onMatch: "ACCEPT"
+            onMismatch: "DENY"
         Policies:
           OnStartupTriggeringPolicy: {}
           SizeBasedTriggeringPolicy:
@@ -95,6 +111,39 @@ configuration:
           SizeBasedTriggeringPolicy:
             size: "4 MB"
           TimeBasedTriggeringPolicy: {}
+      - name: "scheduler"
+        filename: "logs/scheduler/scheduler.log"
+        filepattern: "logs/scheduler/$${date:yyyy-MM}/scheduler.%d{yyyyMMdd}.-%i.gz"
+        JsonLayout:
+          compact: "false"
+          locationInfo: "true"
+          complete: "false"
+          eventEol: "true"
+        #        PatternLayout:
+        #          charset: "UTF-8"
+        #          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "trace"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "info"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "debug"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "warn"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "error"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
   #    NoSql:
   #      name: "mongodb"
   #      bufferSize: "10"
@@ -122,17 +171,17 @@ configuration:
   #          onMatch: "ACCEPT"
   #          onMismatch: "NEUTRAL"
   loggers:
-    logger:
-      name: "history"
-      AppenderRef:
-        - ref: "HistoryFile"
-    #      -
-    #        ref: "ErrorFile"
-    #      -
-    #        ref: "mongodb"
     root:
-      level: "debug"
+      level: "all"
       AppenderRef:
+        - ref: "InfoFile"
+        - ref: "ErrorFile"
         - ref: "Console"
         - ref: "DebugFile"
-        - ref: "ErrorFile"
+    logger:
+      - name: "history"
+        AppenderRef:
+          - ref: "HistoryFile"
+      - name: "scheduler"
+        AppenderRef:
+          - ref: "scheduler"

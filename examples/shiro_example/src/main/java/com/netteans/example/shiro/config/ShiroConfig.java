@@ -1,5 +1,6 @@
 package com.netteans.example.shiro.config;
 
+import org.apache.shiro.authc.Authenticator;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
@@ -42,13 +43,21 @@ public class ShiroConfig {
 
     /**
      * 注入 securityManager
+     *
+     * @param authenticaticator defined authenticaticator
      */
     @Bean
-    public SecurityManager securityManager() {
+    public SecurityManager securityManager(Authenticator authenticaticator) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         // 设置realm.
         securityManager.setRealm(customRealm());
+        securityManager.setAuthenticator(authenticaticator);
         return securityManager;
+    }
+
+    @Bean
+    public Authenticator authenticator() {
+        return new CustomAuthenticator();
     }
 
     /**
