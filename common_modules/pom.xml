@@ -57,6 +57,9 @@
         <module>swagger_module</module>
         <module>valid_module</module>
         <module>request_log_module</module>
+        <module>compress_module</module>
+        <module>common_interfaces</module>
+        <module>structure_module</module>
     </modules>
 
 

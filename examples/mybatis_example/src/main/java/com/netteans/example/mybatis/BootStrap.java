@@ -19,15 +19,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @MapperScans({@MapperScan("com.netteans.example.mybatis.dao.mapper")})
 public class BootStrap {
-    private final static Logger logger = LoggerFactory.getLogger(BootStrap.class);
+    private static final Logger logger = LoggerFactory.getLogger(BootStrap.class);
 
-    private final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 4, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
+    private final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 4, 5, TimeUnit.SECONDS, new LinkedBlockingQueue<>(),
+            r -> {
+                Thread t = new Thread(r);
+                t.setName("factoried thread " + Thread.currentThread().getId());
+                return t;
+            });
 
     @Autowired
     DataSource ds;
@@ -39,6 +45,8 @@ public class BootStrap {
     MybatisProperties mybatisProperties;
 
     public static void main(String[] args) {
+        String a = "ab";
+        String b = "a" + "b";
         logger.info("{}", "args:" + Arrays.toString(args));
         SpringApplication.run(BootStrap.class, args);
     }

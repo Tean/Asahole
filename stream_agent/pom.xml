@@ -32,7 +32,6 @@
         <spring.boot.starter.web.version>2.1.0.RELEASE</spring.boot.starter.web.version>
         <spring.boot.test.version>2.1.0.RELEASE</spring.boot.test.version>
         <spring.test.version>5.1.2.RELEASE</spring.test.version>
-        <spring.webmvc.version>5.1.2.RELEASE</spring.webmvc.version>
         <jave.version>2.4.5</jave.version>
         <javacv.version>1.4.3</javacv.version>
         <netty.version>4.1.32.Final</netty.version>
@@ -60,12 +59,6 @@
             <artifactId>spring-boot-dependencies</artifactId>
             <version>2.0.1.RELEASE</version>
             <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.webmvc.version}</version>
         </dependency>
 
         <dependency>

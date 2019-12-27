@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.File;
 
 @SpringBootApplication
-public class Bootstrap {
-    private static Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+public class BootStrap {
+    private static Logger logger = LoggerFactory.getLogger(BootStrap.class);
 
     public static void main(String[] args) {
         logger.debug("Bootstrap Run @ {}", new File("./").getAbsolutePath());
-        SpringApplication.run(Bootstrap.class, args);
+        SpringApplication.run(BootStrap.class, args);
     }
 }

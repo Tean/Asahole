@@ -1,7 +1,7 @@
 package com.netteans.thrift.java.example.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.netteans.thrift.java.example.Bootstrap;
+import com.netteans.thrift.java.example.BootStrap;
 import com.netteans.thrift.java.example.ExampleClient;
 import com.netteans.thrift.java.example.ExampleConfigure;
 import com.netteans.thrift.java.example.domain.ExpDomain;
@@ -14,13 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Bootstrap.class)
+@SpringBootTest(classes = BootStrap.class)
 public class ExampleTestCase {
 
     private final Logger logger = LoggerFactory.getLogger(ExampleTestCase.class);

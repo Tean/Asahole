@@ -1,6 +1,6 @@
 package com.netteans.agent.test;
 
-import com.netteans.agent.Bootstrap;
+import com.netteans.agent.BootStrap;
 import com.netteans.agent.LocalThreadCounter;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +22,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.SocketAddress;
 import java.nio.channels.*;
 import java.util.concurrent.*;
 
@@ -30,7 +29,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {Bootstrap.class})
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = {BootStrap.class})
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 public class DemoApplicationTests {

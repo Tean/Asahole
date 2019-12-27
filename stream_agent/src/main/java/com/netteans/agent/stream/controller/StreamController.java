@@ -12,11 +12,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Controller;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -40,22 +40,25 @@ public class StreamController {
 
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.parseMediaType("video/mp4"));
-        headers.add("Accept-Ranges", "bytes");
-        headers.add("Connection", "keep-alive");
+        headers.setContentType(MediaType.parseMediaType("video/mpeg4"));
+        headers.add(HttpHeaders.ACCEPT_RANGES, "bytes");
+        headers.add(HttpHeaders.CONNECTION, "keep-alive");
 //        headers.setContentDispositionFormData("attachment", file.getName());
 
         try {
             InputStream is = new FileInputStream(file);
             byte[] body = FileCopyUtils.copyToByteArray(is);
-            return ResponseEntity.ok().headers(headers).body(body);
+            headers.add(HttpHeaders.CONTENT_RANGE, String.valueOf("bytes 0-" + (body.length - 1) + "/" + body.length));
+            headers.add(HttpHeaders.CONTENT_LENGTH, String.valueOf(body.length));
+            ResponseEntity responseEntity = ResponseEntity.ok().headers(headers).body(body);
+            return responseEntity;
         } catch (IOException e) {
             logger.error("{}", e);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).contentType(MediaType.APPLICATION_JSON).body("{\"msg\":\"file not found\"}");
         }
     }
 
-    @RequestMapping(value = "/cam/caputre")
+    @RequestMapping(value = "/cam/capture")
     public ResponseEntity captureCam() {
 
         HttpHeaders headers = new HttpHeaders();

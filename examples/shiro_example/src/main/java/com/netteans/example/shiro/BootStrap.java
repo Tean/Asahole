@@ -19,8 +19,9 @@ import java.util.concurrent.TimeUnit;
 //@ComponentScans({@ComponentScan("com.netteans.example.shiro.controller")})
 @EnableScheduling
 public class BootStrap {
-    public static final Logger SCHEDULER = LoggerFactory.getLogger("scheduler");
-    public static final Logger HISTORY = LoggerFactory.getLogger("history");
+    private static final Logger logger = LoggerFactory.getLogger(BootStrap.class);
+    private static final Logger SCHEDULER = LoggerFactory.getLogger("scheduler");
+    private static final Logger HISTORY = LoggerFactory.getLogger("history");
 
     public static void main(String[] args) {
         SpringApplication.run(BootStrap.class, args);
@@ -28,21 +29,41 @@ public class BootStrap {
 
     @Bean
     public ApplicationRunner ar() {
+        System.out.println("trace: " + logger.isTraceEnabled());
+        System.out.println("debug: " + logger.isDebugEnabled());
+        System.out.println("info: " + logger.isInfoEnabled());
+        System.out.println("warn: " + logger.isWarnEnabled());
+        System.out.println("error: " + logger.isErrorEnabled());
         HashSet set = new HashSet();
         set.spliterator();
-        System.out.println("ar");
-        List<String> s = new LinkedList<String>();
+        System.out.println("ar bean");
+        List<String> s = new LinkedList<>();
         return args -> {
             int[] arr = new int[]{1, 2, 3, 4, 5};
             for (int i : arr) {
                 int finalI = i;
                 new Thread(() -> {
                     System.out.println(finalI);
-                    arr[i-1] = 54;
+                    arr[i - 1] = 54;
                 }).start();
             }
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(1);
             System.out.println(Arrays.toString(arr));
+            logger.trace("ar trace");
+            logger.info("ar info");
+            logger.debug("ar debug");
+            logger.warn("ar warn");
+            logger.error("ar error");
+            SCHEDULER.trace("ar trace");
+            SCHEDULER.info("ar info");
+            SCHEDULER.debug("ar debug");
+            SCHEDULER.warn("ar warn");
+            SCHEDULER.error("ar error");
+            HISTORY.trace("ar trace");
+            HISTORY.info("ar info");
+            HISTORY.debug("ar debug");
+            HISTORY.warn("ar warn");
+            HISTORY.error("ar error");
         };
     }
 
@@ -50,16 +71,16 @@ public class BootStrap {
 
     @Scheduled(fixedRateString = "${app.scheduled.rate}")
     public void schedule() {
-        SCHEDULER.trace("trace");
-        SCHEDULER.info("info");
-        SCHEDULER.debug("debug");
-        SCHEDULER.warn("warn");
-        SCHEDULER.error("error");
-        HISTORY.trace("trace");
-        HISTORY.info("info");
-        HISTORY.debug("debug");
-        HISTORY.warn("warn");
-        HISTORY.error("error");
+//        SCHEDULER.trace("trace");
+//        SCHEDULER.debug("debug");
+//        SCHEDULER.info("info");
+//        SCHEDULER.warn("warn");
+//        SCHEDULER.error("error");
+//        HISTORY.trace("trace");
+//        HISTORY.debug("debug");
+//        HISTORY.info("info");
+//        HISTORY.warn("warn");
+//        HISTORY.error("error");
     }
 }
 

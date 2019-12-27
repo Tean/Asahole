@@ -1,9 +1,8 @@
 package com.netteans.examples.restswagger;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import java.util.concurrent.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -18,12 +17,14 @@ public class Application {
 //        }
 
         BlockingQueue queue = new SynchronousQueue();
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 8, 1, TimeUnit.SECONDS, queue);
+        ThreadFactory threadFactory = new ThreadFactoryBuilder()
+                .setNameFormat("Factoried-Thread-pool-%d").build();
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(4, 8, 1, TimeUnit.SECONDS, queue, threadFactory);
         for (int i = 0; i < 10; i++) {
             threadPoolExecutor.execute(() -> {
 //                Singleton instance = Singleton.getInstance();
 //                System.out.println("ThreadPoolExecutor:" + Thread.currentThread().getId() + " get " + instance);
-                System.out.println("ThreadPoolExecutor:" + Thread.currentThread().getId() + " end");
+                System.out.println("ThreadPoolExecutor:" + Thread.currentThread().getName() + " end");
             });
         }
         System.out.println("Main:" + Thread.currentThread().getId() + " end");
@@ -49,8 +50,9 @@ class Singleton {
                 e.printStackTrace();
             }
             synchronized (Singleton.class) {
-                if (instance == null)
+                if (instance == null) {
                     instance = new Singleton();
+                }
             }
         }
         return instance;

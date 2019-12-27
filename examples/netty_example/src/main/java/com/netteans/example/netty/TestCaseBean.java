@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestCaseBean {
-    private final static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 
     private Date date;
     private String message;

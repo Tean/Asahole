@@ -10,9 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @SpringBootApplication
-public class Bootstrap {
+public class BootStrap {
 
-    private static final Logger logger = LoggerFactory.getLogger(Bootstrap.class);
+    private static final Logger logger = LoggerFactory.getLogger(BootStrap.class);
 
     public static void main(String[] args) {
         logger.error("error test");
@@ -25,7 +25,7 @@ public class Bootstrap {
             e.printStackTrace();
         }
 
-        SpringApplication.run(Bootstrap.class, args);
+        SpringApplication.run(BootStrap.class, args);
 //        System.out.println("port is: " + ExampleConfigure.getPort()); //run之后才能获取得到application.yml的port，需要spring-cloud-context才能获取到bootstrap.yml的port，如果application.yml有重复字段则会优先使用
     }
 }
