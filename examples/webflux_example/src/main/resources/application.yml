@@ -1,0 +1,29 @@
+server:
+  port: 3613
+  address: 0.0.0.0
+  sessionTimeout: 15
+  context-path: /
+  tomcat:
+    basedir: ./tmp
+    accesslog:
+      buffered: true
+      directory: ./logs
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      pattern: common
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+
+spring.profiles.active: debug
+
+---
+spring.profiles: debug
+app.scheduled.rate: 5000 #ms
+
+
+---
+spring.profiles: freqdebug
+app.scheduled.rate: 1000 #ms

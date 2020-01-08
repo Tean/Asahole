@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
 import java.util.concurrent.*;
 
-public class Application {
+public class BootStrap {
     public static void main(String[] args) {
 
 //        for (int i = 0; i < 20; i++) {
