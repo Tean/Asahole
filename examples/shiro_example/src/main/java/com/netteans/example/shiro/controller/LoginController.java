@@ -51,13 +51,8 @@ public class LoginController {
         // 执行认证登陆
         subject.login(token);
         //根据权限，指定返回数据
-        String role = userExample.find(username).getRole();
-        if ("user".equals(role)) {
-            return resultMap.success().message("欢迎登陆");
-        }
-        if ("admin".equals(role)) {
-            return resultMap.success().message("欢迎来到管理员页面");
-        }
+        boolean admin = subject.isPermitted("admin");
+        boolean guester = subject.isPermitted("guester");
         return resultMap.fail().message("权限错误！");
     }
 }

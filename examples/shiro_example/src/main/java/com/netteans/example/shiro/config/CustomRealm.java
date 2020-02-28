@@ -45,10 +45,7 @@ public class CustomRealm extends AuthorizingRealm {
         String password = user.getPassword();
         if (null == password) {
             throw new AccountException("密码不能为空");
-        } else if (!password.equals(new String((char[]) token.getCredentials()))) {
-            throw new AccountException("密码不正确");
         }
-        //TODO：如果用户存在于session Cache踢掉缓存的旧用户并替换为新用户，扩展：根据不同的请求头或者扩展踢掉不同的设备或者终端登录用户
         return new SimpleAuthenticationInfo(token.getPrincipal(), password, getName());
     }
 }

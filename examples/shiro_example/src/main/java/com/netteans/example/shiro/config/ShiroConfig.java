@@ -1,19 +1,27 @@
 package com.netteans.example.shiro.config;
 
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.Authenticator;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.mgt.AuthenticatingSecurityManager;
+import org.apache.shiro.mgt.DefaultSecurityManager;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
-import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.context.annotation.Configuration;
 
+import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
     @Bean
-    public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -44,20 +52,14 @@ public class ShiroConfig {
     /**
      * 注入 securityManager
      *
-     * @param authenticaticator defined authenticaticator
+     * @param customRealm defined customRealm
      */
     @Bean
-    public SecurityManager securityManager(Authenticator authenticaticator) {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+    public SecurityManager securityManager(CustomRealm customRealm, FakeRedisRealm fakeRedisRealm) {
+        AuthenticatingSecurityManager securityManager = new DefaultWebSecurityManager();
         // 设置realm.
-        securityManager.setRealm(customRealm());
-        securityManager.setAuthenticator(authenticaticator);
+        securityManager.setRealms(Arrays.asList(new Realm[]{fakeRedisRealm, customRealm}));
         return securityManager;
-    }
-
-    @Bean
-    public Authenticator authenticator() {
-        return new CustomAuthenticator();
     }
 
     /**
@@ -68,6 +70,25 @@ public class ShiroConfig {
      */
     @Bean
     public CustomRealm customRealm() {
-        return new CustomRealm();
+        CustomRealm customRealm = new CustomRealm();
+        customRealm.setCredentialsMatcher((authenticationToken, authenticationInfo) -> {
+            if (authenticationInfo.getPrincipals().isEmpty()) {
+                return false;
+            }
+            return authenticationToken.getCredentials().equals(authenticationInfo.getCredentials());
+        });
+        return customRealm;
+    }
+
+    @Bean
+    public FakeRedisRealm fakeRedisRealm() {
+        FakeRedisRealm fakeRedisRealm = new FakeRedisRealm();
+        fakeRedisRealm.setCredentialsMatcher((authenticationToken, authenticationInfo) -> {
+            if (!authenticationToken.getPrincipal().toString().toLowerCase().startsWith("f")) {
+                return false;
+            }
+            return authenticationToken.getPrincipal().equals(authenticationInfo.getCredentials());
+        });
+        return fakeRedisRealm;
     }
 }

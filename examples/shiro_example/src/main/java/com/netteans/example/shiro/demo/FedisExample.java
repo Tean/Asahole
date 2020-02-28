@@ -7,27 +7,27 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 @Repository
-public class UserExample {
+public class FedisExample {
     private final Map<String, User> userMap = new ConcurrentSkipListMap<String, User>();
 
-    public UserExample() {
+    public FedisExample() {
         User user = new User();
-        user.setName("user");
+        user.setName("fuser");
         user.setPassword("1234");
         user.setRole("user");
         userMap.put(user.getName(), user);
         User guster = new User();
-        guster.setName("guester");
+        guster.setName("fguester");
         guster.setPassword("1234");
         guster.setRole("guester");
         userMap.put(guster.getName(), guster);
         User admin = new User();
-        admin.setName("admin");
+        admin.setName("fadmin");
         admin.setPassword("1234");
         admin.setRole("admin");
         userMap.put(admin.getName(), admin);
         User acc = new User();
-        acc.setName("acc");
+        acc.setName("facc");
         acc.setPassword("acc");
         acc.setRole("admin");
         userMap.put(acc.getName(), acc);
