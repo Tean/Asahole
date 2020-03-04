@@ -33,7 +33,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <log4j2.version>2.11.1</log4j2.version>
         <jackson.dataformat.yaml.version>2.9.9.3</jackson.dataformat.yaml.version>
-        <jackson.databind.version>2.9.9.3</jackson.databind.version>
+        <jackson.databind.version>2.9.10.3</jackson.databind.version>
         <jackson.core.version>2.9.9.3</jackson.core.version>
         <jcl.over.slf4j.version>1.7.25</jcl.over.slf4j.version>
         <jul.to.slf4j.version>1.7.25</jul.to.slf4j.version>
