@@ -19,18 +19,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.10.3</version>
         </dependency>
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>2.10.3</version>
         </dependency>
         <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+            <version>2.10.3</version>
         </dependency>
 
 

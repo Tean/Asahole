@@ -29,8 +29,9 @@
         <module>storm_example</module>
         <module>multiple_datasource_example</module>
         <module>webflux_example</module>
+        <module>structure_example</module>
     </modules>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -43,23 +44,6 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.2.0.RELEASE</version>
-                <configuration>
-                    <jvmArguments>
-<!--                        -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005-->
-                    </jvmArguments>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -67,60 +51,13 @@
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-
-        <springboot.version>2.1.6.RELEASE</springboot.version>
-        <jackson.dataformat.yaml.version>2.10.0</jackson.dataformat.yaml.version>
-        <jackson.databind.version>2.10.0</jackson.databind.version>
-        <jackson.core.version>2.10.0</jackson.core.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter</artifactId>
-                <version>${springboot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${springboot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-starter-logging</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-log4j2</artifactId>
-                <version>2.2.1.RELEASE</version>
-            </dependency>
-            <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
-                <groupId>com.fasterxml.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-yaml</artifactId>
-                <version>${jackson.dataformat.yaml.version}</version>
-            </dependency>
-            <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>${jackson.databind.version}</version>
-            </dependency>
-            <dependency>  <!-- 加上这个才能辨认到log4j2.yml文件 -->
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-core</artifactId>
-                <version>${jackson.core.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>com.netteans.common</groupId>
                 <artifactId>log_module</artifactId>
@@ -130,6 +67,12 @@
                 <groupId>com.netteans.common</groupId>
                 <artifactId>test_module</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

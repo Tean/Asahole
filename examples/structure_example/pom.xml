@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gof_example</artifactId>
+    <artifactId>structure_example</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.netteans.common</groupId>
-            <artifactId>test_module</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
 </project>

@@ -38,6 +38,7 @@
         <module>broker_feign_module</module>
         <module>cloud_module_consul</module>
         <module>cloud_module_zookeeper</module>
+        <module>cloud_module_eureka</module>
     </modules>
 
     <dependencyManagement>

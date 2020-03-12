@@ -3,20 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>examples</artifactId>
-        <groupId>com.netteans.example</groupId>
+        <artifactId>cloud_modules</artifactId>
+        <groupId>com.netteans.cloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gof_example</artifactId>
+    <artifactId>cloud_module_eureka</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.netteans.common</groupId>
-            <artifactId>test_module</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
 </project>
