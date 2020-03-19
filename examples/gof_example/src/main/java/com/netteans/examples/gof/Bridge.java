@@ -22,34 +22,3 @@ interface IRole {
     String getRole();
 }
 
-class Dami implements IWho {
-
-    @Override
-    public String getName() {
-        return "Daymi";
-    }
-}
-
-class Tom implements IWho {
-
-    @Override
-    public String getName() {
-        return "Tom";
-    }
-}
-
-class AdminRole implements IRole {
-
-    @Override
-    public String getRole() {
-        return "Admin";
-    }
-}
-
-class GunsterRole implements IRole {
-
-    @Override
-    public String getRole() {
-        return "Gunster";
-    }
-}

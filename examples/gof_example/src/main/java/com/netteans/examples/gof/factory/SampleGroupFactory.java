@@ -18,6 +18,7 @@ public class SampleGroupFactory implements ISampleGroupFactory {
     private SampleGroupFactory() {
     }
 
+    @Override
     public <T extends ISampleFactory> T getSomeSampleFactory(Class<T> sampleFactoryClassType) {
         try {
             return sampleFactoryClassType.getConstructor().newInstance();

@@ -2,6 +2,7 @@ package com.netteans.example.mybatis;
 
 import com.netteans.example.mybatis.dao.model.ExampleUser;
 import com.netteans.example.mybatis.service.ExampleService;
+import org.apache.ibatis.binding.MapperProxyFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;

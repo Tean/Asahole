@@ -11,5 +11,11 @@
 
     <artifactId>structure_example</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.netteans.common</groupId>
+            <artifactId>test_module</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
