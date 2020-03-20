@@ -1,4 +1,4 @@
-package com.netteans.example.structure;
+package com.netteans.examples.structure;
 
 public interface ITree<N extends INode> {
     ITree<N> insert(N node);

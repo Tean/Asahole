@@ -1,4 +1,4 @@
-package com.netteans.example.shiro.controller.r;
+package com.netteans.examples.shiro.controller.r;
 
 import org.springframework.stereotype.Component;
 

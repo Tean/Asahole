@@ -1,4 +1,4 @@
-package com.netteans.example.netty.codec;
+package com.netteans.examples.netty.codec;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

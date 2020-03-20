@@ -1,7 +1,7 @@
-package com.netteans.example.shiro.controller;
+package com.netteans.examples.shiro.controller;
 
-import com.netteans.example.shiro.controller.r.ResultMap;
-import com.netteans.example.shiro.demo.UserExample;
+import com.netteans.examples.shiro.controller.r.ResultMap;
+import com.netteans.examples.shiro.demo.UserExample;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;

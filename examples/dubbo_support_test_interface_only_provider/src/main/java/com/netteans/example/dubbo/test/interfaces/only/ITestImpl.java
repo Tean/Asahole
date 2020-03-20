@@ -1,4 +1,4 @@
-package com.netteans.example.dubbo.test.interfaces.only;
+package com.netteans.examples.dubbo.test.interfaces.only;
 
 public class ITestImpl implements ITest {
     @Override

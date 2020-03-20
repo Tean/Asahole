@@ -1,7 +1,7 @@
-package com.netteans.examples.gof.factory;
+package com.netteans.exampless.gof.factory;
 
-import com.netteans.examples.gof.factory.contract.ISampleFactory;
-import com.netteans.examples.gof.factory.contract.ISampleGroupFactory;
+import com.netteans.exampless.gof.factory.contract.ISampleFactory;
+import com.netteans.exampless.gof.factory.contract.ISampleGroupFactory;
 
 import java.lang.reflect.InvocationTargetException;
 

@@ -1,4 +1,4 @@
-package com.netteans.example.starter;
+package com.netteans.examples.starter;
 
 public class ExampleConfig {
     private String name;

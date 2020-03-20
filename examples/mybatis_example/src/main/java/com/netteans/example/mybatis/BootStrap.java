@@ -1,7 +1,7 @@
-package com.netteans.example.mybatis;
+package com.netteans.examples.mybatis;
 
-import com.netteans.example.mybatis.dao.model.ExampleUser;
-import com.netteans.example.mybatis.service.ExampleService;
+import com.netteans.examples.mybatis.dao.model.ExampleUser;
+import com.netteans.examples.mybatis.service.ExampleService;
 import org.apache.ibatis.binding.MapperProxyFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
@@ -25,7 +25,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
-@MapperScans({@MapperScan("com.netteans.example.mybatis.dao.mapper")})
+@MapperScans({@MapperScan("com.netteans.examples.mybatis.dao.mapper")})
 public class BootStrap {
     private static final Logger logger = LoggerFactory.getLogger(BootStrap.class);
 

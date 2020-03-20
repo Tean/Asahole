@@ -1,4 +1,4 @@
-package com.netteans.examples.gof;
+package com.netteans.exampless.gof;
 
 public class CatAdapter implements IAdapter<Integer> {
     private final Cat cat;

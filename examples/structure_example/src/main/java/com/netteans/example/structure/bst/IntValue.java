@@ -1,6 +1,6 @@
-package com.netteans.example.structure.bst;
+package com.netteans.examples.structure.bst;
 
-import com.netteans.example.structure.IValue;
+import com.netteans.examples.structure.IValue;
 
 public class IntValue implements IValue<Integer> {
     int value;

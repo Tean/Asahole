@@ -30,6 +30,7 @@
         <module>multiple_datasource_example</module>
         <module>webflux_example</module>
         <module>structure_example</module>
+        <module>aop_example</module>
     </modules>
     
     <build>
@@ -52,6 +53,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
+        <spring.test.version>5.1.2.RELEASE</spring.test.version>
+
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     </properties>
 
@@ -67,12 +70,43 @@
                 <groupId>com.netteans.common</groupId>
                 <artifactId>test_module</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-test</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.test.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

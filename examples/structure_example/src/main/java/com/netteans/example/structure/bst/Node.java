@@ -1,7 +1,7 @@
-package com.netteans.example.structure.bst;
+package com.netteans.examples.structure.bst;
 
-import com.netteans.example.structure.INode;
-import com.netteans.example.structure.IValue;
+import com.netteans.examples.structure.INode;
+import com.netteans.examples.structure.IValue;
 
 public class Node<V extends IValue<?>> implements INode<V> {
     V value;

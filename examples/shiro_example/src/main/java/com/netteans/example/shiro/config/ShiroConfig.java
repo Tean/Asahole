@@ -1,4 +1,4 @@
-package com.netteans.example.shiro.config;
+package com.netteans.examples.shiro.config;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

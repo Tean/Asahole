@@ -1,6 +1,6 @@
-package com.netteans.example.mybatis.dao.mapper;
+package com.netteans.examples.mybatis.dao.mapper;
 
-import com.netteans.example.mybatis.dao.model.ExampleMessage;
+import com.netteans.examples.mybatis.dao.model.ExampleMessage;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -24,6 +24,6 @@ public interface ExampleMessageMapperExt extends ExampleMessageMapper{
             "from example_message",
             "where id = #{id,jdbcType=INTEGER}"
     })
-    @ResultMap("com.netteans.example.mybatis.dao.mapper.ExampleUserMapper.BaseResultMap")
+    @ResultMap("com.netteans.examples.mybatis.dao.mapper.ExampleUserMapper.BaseResultMap")
     ExampleMessage selectByPrimaryKey(Integer id);
 }

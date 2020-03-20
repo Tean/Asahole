@@ -1,4 +1,4 @@
-package com.netteans.examples.gof.factory;
+package com.netteans.exampless.gof.factory;
 
 public class SampleEntity {
     String name;

@@ -1,7 +1,7 @@
-package com.netteans.example.webflux.controller;
+package com.netteans.examples.webflux.controller;
 
-import com.netteans.example.webflux.entity.ExpPub;
-import com.netteans.example.webflux.service.ExpService;
+import com.netteans.examples.webflux.entity.ExpPub;
+import com.netteans.examples.webflux.service.ExpService;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package com.netteans.examples.gof;
+package com.netteans.exampless.gof;
 
 public class Cat {
     int miow() {

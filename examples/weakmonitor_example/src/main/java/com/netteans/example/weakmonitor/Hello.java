@@ -1,4 +1,4 @@
-package com.netteans.example.weakmonitor;
+package com.netteans.examples.weakmonitor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

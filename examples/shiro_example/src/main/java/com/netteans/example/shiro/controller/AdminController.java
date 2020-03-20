@@ -1,6 +1,6 @@
-package com.netteans.example.shiro.controller;
+package com.netteans.examples.shiro.controller;
 
-import com.netteans.example.shiro.controller.r.ResultMap;
+import com.netteans.examples.shiro.controller.r.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

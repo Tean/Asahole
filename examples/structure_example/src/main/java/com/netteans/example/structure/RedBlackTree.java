@@ -1,4 +1,4 @@
-package com.netteans.example.structure;
+package com.netteans.examples.structure;
 
 public class RedBlackTree {
     public class Node {

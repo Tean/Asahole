@@ -1,4 +1,4 @@
-package com.netteans.example.shiro.demo;
+package com.netteans.examples.shiro.demo;
 
 public class User {
     private String name;

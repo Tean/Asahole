@@ -1,6 +1,6 @@
-package com.netteans.example.structure;
+package com.netteans.examples.structure;
 
-import com.netteans.example.structure.bst.IntValue;
+import com.netteans.examples.structure.bst.IntValue;
 
 public interface IValue<V> extends Comparable<V> {
     public V getValue();

@@ -1,7 +1,7 @@
-package com.netteans.example.structure.bst;
+package com.netteans.examples.structure.bst;
 
-import com.netteans.example.structure.ITree;
-import com.netteans.example.structure.IValue;
+import com.netteans.examples.structure.ITree;
+import com.netteans.examples.structure.IValue;
 
 import java.util.Stack;
 

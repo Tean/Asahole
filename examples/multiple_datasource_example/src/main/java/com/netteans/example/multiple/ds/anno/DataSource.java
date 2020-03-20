@@ -1,4 +1,4 @@
-package com.netteans.example.multiple.ds.anno;
+package com.netteans.examples.multiple.ds.anno;
 
 /**
  * @author netteans

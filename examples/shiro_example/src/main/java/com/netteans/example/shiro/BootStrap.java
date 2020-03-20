@@ -1,4 +1,4 @@
-package com.netteans.example.shiro;
+package com.netteans.examples.shiro;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 
 @SpringBootApplication
-//@ComponentScans({@ComponentScan("com.netteans.example.shiro.controller")})
+//@ComponentScans({@ComponentScan("com.netteans.examples.shiro.controller")})
 public class BootStrap {
 
 

@@ -1,4 +1,4 @@
-package com.netteans.examples.gof.absfactory;
+package com.netteans.exampless.gof.absfactory;
 
 public class AbstractFactoryMethod {
 

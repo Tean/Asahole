@@ -1,4 +1,4 @@
-package com.netteans.example.mybatis.plugin;
+package com.netteans.examples.mybatis.plugin;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

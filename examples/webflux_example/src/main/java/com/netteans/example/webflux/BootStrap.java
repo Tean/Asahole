@@ -1,4 +1,4 @@
-package com.netteans.example.webflux;
+package com.netteans.examples.webflux;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

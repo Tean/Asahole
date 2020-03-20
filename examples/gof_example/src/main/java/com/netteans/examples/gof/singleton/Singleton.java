@@ -1,4 +1,4 @@
-package com.netteans.examples.gof.singleton;
+package com.netteans.exampless.gof.singleton;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

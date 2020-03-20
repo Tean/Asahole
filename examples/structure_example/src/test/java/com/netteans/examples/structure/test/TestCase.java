@@ -1,9 +1,9 @@
-package com.netteans.examples.structure.test;
+package com.netteans.exampless.structure.test;
 
-import com.netteans.example.structure.IValue;
-import com.netteans.example.structure.bst.BinaryTree;
-import com.netteans.example.structure.bst.IntValue;
-import com.netteans.example.structure.bst.Node;
+import com.netteans.examples.structure.IValue;
+import com.netteans.examples.structure.bst.BinaryTree;
+import com.netteans.examples.structure.bst.IntValue;
+import com.netteans.examples.structure.bst.Node;
 import org.junit.Test;
 
 import java.util.ArrayList;

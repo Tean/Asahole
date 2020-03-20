@@ -1,4 +1,4 @@
-package com.netteans.examples.gof;
+package com.netteans.exampless.gof;
 
 public class Builder implements IBuild<Product> {
     final Product product = new Product();

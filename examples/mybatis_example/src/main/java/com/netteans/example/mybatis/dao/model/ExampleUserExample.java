@@ -1,4 +1,4 @@
-package com.netteans.example.mybatis.dao.model;
+package com.netteans.examples.mybatis.dao.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.netteans.example.elk;
+package com.netteans.examples.elk;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

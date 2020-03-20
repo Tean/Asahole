@@ -1,4 +1,4 @@
-package com.netteans.example.starter;
+package com.netteans.examples.starter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

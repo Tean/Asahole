@@ -1,4 +1,4 @@
-package com.netteans.examples.gof.absfactory;
+package com.netteans.exampless.gof.absfactory;
 
 public interface ISuit<S extends ISuit> {
     String getDetail();
