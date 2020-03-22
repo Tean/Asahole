@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof.factory.enums;
+package com.netteans.examples.gof.factory.enums;
 
 /**
  * Created by Tean on 2016/5/31.

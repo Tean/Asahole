@@ -1,16 +1,16 @@
-package com.netteans.exampless.gof.test;
+package com.netteans.examples.gof.test;
 
-import com.netteans.exampless.gof.*;
-import com.netteans.exampless.gof.absfactory.AbstractFactoryMethod;
-import com.netteans.exampless.gof.absfactory.Animal;
-import com.netteans.exampless.gof.absfactory.IFactory;
-import com.netteans.exampless.gof.absfactory.ISuit;
-import com.netteans.exampless.gof.factory.*;
-import com.netteans.exampless.gof.factory.contract.ISampleFactory;
-import com.netteans.exampless.gof.proxy.IProxy;
-import com.netteans.exampless.gof.proxy.IProxyImpl;
-import com.netteans.exampless.gof.proxy.Proxy;
-import com.netteans.exampless.gof.singleton.Singleton;
+import com.netteans.examples.gof.*;
+import com.netteans.examples.gof.absfactory.AbstractFactoryMethod;
+import com.netteans.examples.gof.absfactory.Animal;
+import com.netteans.examples.gof.absfactory.IFactory;
+import com.netteans.examples.gof.absfactory.ISuit;
+import com.netteans.examples.gof.factory.*;
+import com.netteans.examples.gof.factory.contract.ISampleFactory;
+import com.netteans.examples.gof.proxy.IProxy;
+import com.netteans.examples.gof.proxy.IProxyImpl;
+import com.netteans.examples.gof.proxy.Proxy;
+import com.netteans.examples.gof.singleton.Singleton;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -83,19 +83,19 @@ public class TestCase {
     public void testProxy() {
         Proxy.Static staticProxy = new Proxy.Static();
         staticProxy.setDelegate(new IProxyImpl("static"));
-        System.out.println(staticProxy.proxyMethod());
+        System.out.println(staticProxy.proxyMethod("statics"));
 
         Proxy.Dynamic dynamicProxy = new Proxy.Dynamic();
         dynamicProxy.setDelegate(new IProxyImpl("dynamic"));
         try {
-            System.out.println(dynamicProxy.invoke(IProxyImpl.class.getMethod("proxyMethod")));
+            System.out.println(dynamicProxy.invoke(IProxy.class.getDeclaredMethod("proxyMethod", Object.class), "dynamicstic"));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
 
         IProxy proxy = Proxy.JDKDynamicProxyFactory.newInstance(IProxy.class);
         System.out.println(proxy.toString());
-        Object o = proxy.proxyMethod();
+        Object o = proxy.proxyMethod("this is yourbatis");
         System.out.println(o);
     }
 

@@ -1,22 +1,23 @@
-package com.netteans.exampless.gof.proxy;
+package com.netteans.examples.gof.proxy;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class Proxy {
-    public static class Static implements IProxy {
-        private IProxy delegate;
+    public static class Static<P, R> implements IProxy<P, R> {
+        private IProxy<P, R> delegate;
 
-        public void setDelegate(IProxy delegate) {
+        public void setDelegate(IProxy<P, R> delegate) {
             this.delegate = delegate;
         }
 
         @Override
-        public Object proxyMethod() {
+        public R proxyMethod(P parameter) {
             System.out.println("invoke by static proxy");
-            return delegate.proxyMethod();
+            return delegate.proxyMethod(parameter);
         }
     }
 
@@ -27,10 +28,10 @@ public class Proxy {
             this.delegate = delegate;
         }
 
-        public Object invoke(Method m) {
+        public Object invoke(Method m,Object... args) {
             System.out.println("invoke by dynamic proxy");
             try {
-                return m.invoke(delegate);
+                return m.invoke(delegate, args);
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
@@ -72,7 +73,7 @@ public class Proxy {
                             Passion passion = (Passion) annotation;
                             boolean passed = passion.passed();
                             if (passed) {
-                                msg = "have passtion";
+                                msg = "have passion because " + Arrays.toString(args);
                             }
                         }
                     }

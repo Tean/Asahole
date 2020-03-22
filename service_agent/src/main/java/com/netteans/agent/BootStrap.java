@@ -14,7 +14,7 @@ import java.io.File;
 
 @SpringBootApplication
 public class BootStrap {
-        private static Logger logger = LoggerFactory.getLogger(BootStrap.class);
+    private static Logger logger = LoggerFactory.getLogger(BootStrap.class);
 
     public static void main(String[] args) {
         logger.info("Bootstrap Run @ {}", new File("./").getAbsolutePath());

@@ -1,7 +1,6 @@
 package com.netteans.example.starter.test;
 
-import com.netteans.example.starter.ExampleAutoConfiguration;
-import com.netteans.example.starter.ExampleConfig;
+import com.netteans.examples.starter.ExampleConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,10 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.stereotype.Component;
 
-import javax.tools.ForwardingJavaFileManager;
-import javax.tools.JavaCompiler;
-import javax.tools.JavaFileManager;
-import javax.tools.ToolProvider;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

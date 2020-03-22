@@ -3,50 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>asahole</artifactId>
+        <groupId>com.netteans.hole</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>com.netteans</groupId>
     <artifactId>stream_agent</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <properties>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-
-        <spring.boot.starter.web.version>2.1.0.RELEASE</spring.boot.starter.web.version>
-        <spring.boot.test.version>2.1.0.RELEASE</spring.boot.test.version>
-        <spring.test.version>5.1.2.RELEASE</spring.test.version>
-        <jave.version>2.4.5</jave.version>
-        <javacv.version>1.4.3</javacv.version>
-        <netty.version>4.1.32.Final</netty.version>
-
-        <log.module.version>1.0-SNAPSHOT</log.module.version>
-        <requestlog.module.version>1.0-SNAPSHOT</requestlog.module.version>
-        <test.module.version>1.0-SNAPSHOT</test.module.version>
-    </properties>
 
     <dependencies>
         <!-- scope:compile -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.starter.web.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -62,14 +32,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>log_module</artifactId>
             <version>${log.module.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>request_log_module</artifactId>
-            <version>${requestlog.module.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
@@ -95,11 +65,6 @@
         </dependency>
         <dependency>
             <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
-            <version>${javacv.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bytedeco</groupId>
             <artifactId>javacv-platform</artifactId>
             <version>${javacv.version}</version>
         </dependency>
@@ -108,8 +73,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
-            <version>${spring.boot.test.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -119,9 +82,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>test_module</artifactId>
-            <version>${test.module.version}</version>
+            <version>${project.parent.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

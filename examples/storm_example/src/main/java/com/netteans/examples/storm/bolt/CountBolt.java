@@ -1,4 +1,4 @@
-package com.netteans.exampless.storm.bolt;
+package com.netteans.examples.storm.bolt;
 
 import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;

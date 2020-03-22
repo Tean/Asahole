@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof;
+package com.netteans.examples.gof;
 
 public class AdminRole implements IRole {
 

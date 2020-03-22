@@ -1,6 +1,6 @@
-package com.netteans.exampless.gof.factory;
+package com.netteans.examples.gof.factory;
 
-import com.netteans.exampless.gof.factory.contract.SampleInterface;
+import com.netteans.examples.gof.factory.contract.SampleInterface;
 
 /**
  * Created by tanshengyong on 16/5/29.

@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof;
+package com.netteans.examples.gof;
 
 public class DogAdapter implements IAdapter<String> {
     private final Dog dog;

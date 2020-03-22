@@ -1,4 +1,4 @@
-package com.netteans.exampless.restswagger;
+package com.netteans.examples.restswagger;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 

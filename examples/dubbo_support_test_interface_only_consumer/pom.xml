@@ -5,7 +5,7 @@
 
     <parent>
         <artifactId>examples</artifactId>
-        <groupId>com.netteans.example</groupId>
+        <groupId>com.netteans.hole</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -18,7 +18,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans.example</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>dubbo_support_test_interface_only</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -48,7 +48,7 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>log_module</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

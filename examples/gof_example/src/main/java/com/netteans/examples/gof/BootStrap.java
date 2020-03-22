@@ -1,14 +1,14 @@
-package com.netteans.exampless.gof;
+package com.netteans.examples.gof;
 
-import com.netteans.exampless.gof.absfactory.AbstractFactoryMethod;
-import com.netteans.exampless.gof.absfactory.Animal;
-import com.netteans.exampless.gof.absfactory.IFactory;
-import com.netteans.exampless.gof.absfactory.ISuit;
-import com.netteans.exampless.gof.factory.*;
-import com.netteans.exampless.gof.factory.contract.ISampleFactory;
-import com.netteans.exampless.gof.proxy.IProxyImpl;
-import com.netteans.exampless.gof.proxy.Proxy;
-import com.netteans.exampless.gof.singleton.Singleton;
+import com.netteans.examples.gof.absfactory.AbstractFactoryMethod;
+import com.netteans.examples.gof.absfactory.Animal;
+import com.netteans.examples.gof.absfactory.IFactory;
+import com.netteans.examples.gof.absfactory.ISuit;
+import com.netteans.examples.gof.factory.*;
+import com.netteans.examples.gof.factory.contract.ISampleFactory;
+import com.netteans.examples.gof.proxy.IProxyImpl;
+import com.netteans.examples.gof.proxy.Proxy;
+import com.netteans.examples.gof.singleton.Singleton;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

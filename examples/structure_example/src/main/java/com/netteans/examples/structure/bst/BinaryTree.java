@@ -3,8 +3,6 @@ package com.netteans.examples.structure.bst;
 import com.netteans.examples.structure.ITree;
 import com.netteans.examples.structure.IValue;
 
-import java.util.Stack;
-
 public class BinaryTree<V extends IValue<?>> implements ITree<Node<V>> {
     private Node<V> root;
 
@@ -14,19 +12,23 @@ public class BinaryTree<V extends IValue<?>> implements ITree<Node<V>> {
             root = node;
         } else {
             Node<V> iroot = root;
-            Node<V> ileft = iroot.left;
-            Node<V> iright = iroot.right;
-            Stack<Node<V>> nodeStack = new Stack<>();
-
-            while (true) {
-                if (ileft == null) {
-                    ileft = node;
-                } else if (iright == null) {
-                    iright = node;
+            while (iroot != null) {
+                if (node.compareTo(iroot) < 0) {
+                    if (iroot.left == null) {
+                        iroot.left = node;
+                        node.parent = iroot;
+                        break;
+                    } else {
+                        iroot = iroot.left;
+                    }
                 } else {
-                    iroot = ileft;
-                    ileft = iroot.left;
-                    iright = iroot.right;
+                    if (iroot.right == null) {
+                        iroot.right = node;
+                        node.parent = iroot;
+                        break;
+                    } else {
+                        iroot = iroot.right;
+                    }
                 }
             }
         }

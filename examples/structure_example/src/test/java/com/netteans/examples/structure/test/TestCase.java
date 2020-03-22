@@ -1,4 +1,4 @@
-package com.netteans.exampless.structure.test;
+package com.netteans.examples.structure.test;
 
 import com.netteans.examples.structure.IValue;
 import com.netteans.examples.structure.bst.BinaryTree;
@@ -26,6 +26,7 @@ public class TestCase {
         strings.add("9");
         strings.add("10");
         strings.add("11");
+        TreeSet<Integer> integers = new TreeSet<>();
 
         List<IValue<Integer>> comparables = new ArrayList<>();
         comparables.add(new IntValue(5));
@@ -39,7 +40,7 @@ public class TestCase {
 
         BinaryTree binaryTree = new BinaryTree();
         for (int i = 0; i < comparables.size(); i++) {
-            binaryTree.insert(new Node<>(comparables.get(i)));
+            binaryTree.insert(new Node(comparables.get(i)));
         }
 
         System.out.println("");

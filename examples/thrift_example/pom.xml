@@ -4,36 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>examples</artifactId>
-        <groupId>com.netteans.example</groupId>
+        <groupId>com.netteans.hole</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>thrift_example</artifactId>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-
         <thrift.version>0.12.0</thrift.version>
-        <springboot.version>2.1.3.RELEASE</springboot.version>
     </properties>
 
     <dependencies>
@@ -49,27 +28,22 @@
         <dependency><!-- 有此项才可以读取 bootstrap.xml/yml/properties等 -->
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-context</artifactId>
-            <version>2.1.1.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.6.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>log_module</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>test_module</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
-            <version>2.1.0.RELEASE</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

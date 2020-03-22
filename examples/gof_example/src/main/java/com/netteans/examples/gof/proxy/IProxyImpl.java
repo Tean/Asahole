@@ -1,6 +1,6 @@
-package com.netteans.exampless.gof.proxy;
+package com.netteans.examples.gof.proxy;
 
-public class IProxyImpl implements IProxy<String> {
+public class IProxyImpl implements IProxy<String, String> {
 
     private final String status;
 
@@ -9,7 +9,7 @@ public class IProxyImpl implements IProxy<String> {
     }
 
     @Override
-    public String proxyMethod() {
-        return "static proxy impl " + status;
+    public String proxyMethod(String parameter) {
+        return "static proxy impl " + status + " with " + parameter;
     }
 }

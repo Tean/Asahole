@@ -1,4 +1,4 @@
-package com.netteans.exampless.shiro.test;
+package com.netteans.examples.shiro.test;
 
 import com.netteans.examples.shiro.ILambda;
 import com.netteans.examples.shiro.VoidLambda;

@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof.absfactory;
+package com.netteans.examples.gof.absfactory;
 
 public interface IFactory<P extends ISuit> {
 

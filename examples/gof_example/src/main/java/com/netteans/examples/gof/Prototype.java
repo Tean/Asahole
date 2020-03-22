@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof;
+package com.netteans.examples.gof;
 
 public class Prototype implements ICloneable<Prototype>{
 

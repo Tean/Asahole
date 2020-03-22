@@ -1,4 +1,4 @@
-package com.netteans.exampless.gof.proxy;
+package com.netteans.examples.gof.proxy;
 
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;

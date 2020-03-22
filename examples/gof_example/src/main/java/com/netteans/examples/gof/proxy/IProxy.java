@@ -1,10 +1,11 @@
-package com.netteans.exampless.gof.proxy;
+package com.netteans.examples.gof.proxy;
 
-public interface IProxy<R> {
+public interface IProxy<P, R> {
     /**
      * 代理方法
+     *
      * @return R
      */
-    @Passion
-    R proxyMethod();
+    @Passion(passed = false)
+    R proxyMethod(P parameter);
 }
