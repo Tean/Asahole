@@ -1,6 +1,6 @@
-package com.netteans.dubbo.example.service;
+package com.netteans.examples.dubbo.service;
 
-import com.netteans.dubbo.example.domain.ActionDetail;
+import com.netteans.examples.dubbo.domain.ActionDetail;
 import org.apache.dubbo.config.annotation.Service;
 
 import java.util.ArrayList;

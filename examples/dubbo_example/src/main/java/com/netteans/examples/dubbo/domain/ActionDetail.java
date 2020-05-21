@@ -1,4 +1,4 @@
-package com.netteans.dubbo.example.domain;
+package com.netteans.examples.dubbo.domain;
 
 import java.io.Serializable;
 

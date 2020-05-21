@@ -2,7 +2,6 @@ package com.netteans.examples.mybatis;
 
 import com.netteans.examples.mybatis.dao.model.ExampleUser;
 import com.netteans.examples.mybatis.service.ExampleService;
-import org.apache.ibatis.binding.MapperProxyFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
@@ -20,7 +19,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 

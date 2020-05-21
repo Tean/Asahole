@@ -1,5 +1,5 @@
-namespace java com.netteans.thrift.java.example.domain
-namespace go com.netteans.thrift.go.example.domain
+namespace java com.netteans.examples.thrift.domain
+namespace go com.netteans.examples.thrift.domain
 
 struct ExpDomain{
     1: optional bool domainBool;

@@ -1,6 +1,6 @@
-package com.netteans.thrift.java.example;
+package com.netteans.examples.thrift;
 
-import com.netteans.thrift.java.example.domain.HelloService;
+import com.netteans.examples.thrift.domain.HelloService;
 import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.server.TNonblockingServer;
 import org.apache.thrift.transport.TNonblockingServerSocket;

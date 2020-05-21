@@ -1,4 +1,4 @@
-package com.netteans.vertx.example.starter;
+package com.netteans.examples.vertx.starter;
 
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;

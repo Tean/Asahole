@@ -1,10 +1,10 @@
-package com.netteans.thrift.java.example.test;
+package com.netteans.examples.thrift.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.netteans.thrift.java.example.BootStrap;
-import com.netteans.thrift.java.example.ExampleClient;
-import com.netteans.thrift.java.example.ExampleConfigure;
-import com.netteans.thrift.java.example.domain.ExpDomain;
+import com.netteans.examples.thrift.BootStrap;
+import com.netteans.examples.thrift.ExampleConfigure;
+import com.netteans.examples.thrift.ExampleClient;
+import com.netteans.examples.thrift.domain.ExpDomain;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
-package com.netteans.thrift.java.example;
+package com.netteans.examples.thrift;
 
-import com.netteans.thrift.java.example.domain.ExpDomain;
-import com.netteans.thrift.java.example.domain.HelloService;
+import com.netteans.examples.thrift.domain.HelloService;
+import com.netteans.examples.thrift.domain.ExpDomain;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.protocol.TProtocol;

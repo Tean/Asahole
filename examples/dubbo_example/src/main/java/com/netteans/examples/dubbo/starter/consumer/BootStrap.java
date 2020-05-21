@@ -1,6 +1,6 @@
-package com.netteans.dubbo.example.starter.consumer;
+package com.netteans.examples.dubbo.starter.consumer;
 
-import com.netteans.dubbo.example.service.IAction;
+import com.netteans.examples.dubbo.service.IAction;
 import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

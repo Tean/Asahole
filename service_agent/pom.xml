@@ -21,7 +21,6 @@
 
         <spring.boot.starter.web.version>2.1.0.RELEASE</spring.boot.starter.web.version>
         <spring.boot.test.version>2.1.0.RELEASE</spring.boot.test.version>
-        <spring.test.version>5.1.2.RELEASE</spring.test.version>
 
         <service.controller.version>1.0-SNAPSHOT</service.controller.version>
         <common.modules.version>1.0-SNAPSHOT</common.modules.version>
@@ -82,7 +81,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.test.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

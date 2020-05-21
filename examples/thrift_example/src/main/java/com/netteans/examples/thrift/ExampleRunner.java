@@ -1,4 +1,4 @@
-package com.netteans.thrift.java.example;
+package com.netteans.examples.thrift;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

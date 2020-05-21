@@ -1,4 +1,4 @@
-package com.netteans.thrift.java.example;
+package com.netteans.examples.thrift;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;

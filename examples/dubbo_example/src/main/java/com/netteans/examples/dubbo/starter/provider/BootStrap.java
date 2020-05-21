@@ -1,4 +1,4 @@
-package com.netteans.dubbo.example.starter.provider;
+package com.netteans.examples.dubbo.starter.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

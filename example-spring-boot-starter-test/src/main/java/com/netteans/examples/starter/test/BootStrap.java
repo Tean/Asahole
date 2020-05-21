@@ -1,4 +1,4 @@
-package com.netteans.example.starter.test;
+package com.netteans.examples.starter.test;
 
 import com.netteans.examples.starter.ExampleConfig;
 import org.springframework.beans.factory.annotation.Autowired;

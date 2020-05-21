@@ -1,4 +1,4 @@
-package com.netteans.dubbo.example.service;
+package com.netteans.examples.dubbo.service;
 
 import java.util.List;
 

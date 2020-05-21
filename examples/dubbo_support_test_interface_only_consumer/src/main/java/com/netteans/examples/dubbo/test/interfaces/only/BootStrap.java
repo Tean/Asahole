@@ -1,8 +1,7 @@
-import com.netteans.examples.dubbo.test.interfaces.only.EmbeddedZooKeeper;
+package com.netteans.examples.dubbo.test.interfaces.only;
+
 import com.netteans.examples.dubbo.test.interfaces.only.ITest;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.IOException;
 
 public class BootStrap {
 

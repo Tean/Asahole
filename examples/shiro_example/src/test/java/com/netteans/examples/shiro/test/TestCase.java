@@ -5,10 +5,8 @@ import com.netteans.examples.shiro.VoidLambda;
 import org.junit.Test;
 import sun.misc.ProxyGenerator;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.lang.reflect.Proxy;
 import java.util.function.Consumer;
 
