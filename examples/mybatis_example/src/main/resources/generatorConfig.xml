@@ -9,7 +9,7 @@
     <classPathEntry location="${jdbc.driverLocation}"/>
 
     <context id="default" targetRuntime="MyBatis3">
-        <plugin type="com.netteans.example.mybatis.plugin.EntityChainPlugin"/>
+        <plugin type="com.netteans.examples.mybatis.plugin.EntityChainPlugin"/>
         <commentGenerator>
             <property name="suppressDate" value="true"/>
         </commentGenerator>
@@ -31,7 +31,7 @@
             targetPackage     指定生成的model生成所在的包名
             targetProject     指定在该项目下所在的路径
         -->
-        <javaModelGenerator targetPackage="com.netteans.example.mybatis.dao.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.netteans.examples.mybatis.dao.model" targetProject="src/main/java">
             <property name="constructorBased" value="true"/>
 
             <property name="enableSubPackages" value="false"/>
@@ -52,7 +52,7 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator targetPackage="com.netteans.example.mybatis.dao.mapper" targetProject="src/main/java"
+        <javaClientGenerator targetPackage="com.netteans.examples.mybatis.dao.mapper" targetProject="src/main/java"
                              type="MIXEDMAPPER"> <!-- ANNOTATEDMAPPER/annotation only | MIXEDMAPPER(MyBatis3 only)/simple annotation & complex xml | XMLMAPPER/xml only -->
             <property name="enableSubPackages" value=""/>
             <!--

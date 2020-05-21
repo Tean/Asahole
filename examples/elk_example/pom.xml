@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>examples</artifactId>
-        <groupId>com.netteans.example</groupId>
+        <groupId>com.netteans.hole</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -21,21 +21,6 @@
         <elastic.rest.client.version>7.1.1</elastic.rest.client.version>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -48,7 +33,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>log_module</artifactId>
         </dependency>
 

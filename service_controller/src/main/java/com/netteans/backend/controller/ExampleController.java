@@ -32,12 +32,6 @@ public class ExampleController {
     @Autowired
     private IService service;
 
-    @Value("${id.auth:unbound}")
-    private String auth;
-
-    @Value("${id.litter:unbound}")
-    private String litter;
-
     @Autowired
     private HttpServletRequest request;
 
@@ -76,19 +70,21 @@ public class ExampleController {
         logger.info("info @ controller test");
         logger.warn("warn @ controller test");
         logger.error("error @ controller test");
-        history.trace("request id is {}, inject auth is {}, litter is {}", id, auth, litter);
-        history.debug("request id is {}, inject auth is {}, litter is {}", id, auth, litter);
-        history.info("request id is {}, inject auth is {}, litter is {}", id, auth, litter);
-        history.warn("request id is {}, inject auth is {}, litter is {}", id, auth, litter);
-        history.error("request id is {}, inject auth is {}, litter is {}", id, auth, litter);
+        history.trace("request id is {}, inject auth is {}, litter is {}", id, service.getAuth(), service.getLitter());
+        history.debug("request id is {}, inject auth is {}, litter is {}", id, service.getAuth(), service.getLitter());
+        history.info("request id is {}, inject auth is {}, litter is {}", id, service.getAuth(), service.getLitter());
+        history.warn("request id is {}, inject auth is {}, litter is {}", id, service.getAuth(), service.getLitter());
+        history.error("request id is {}, inject auth is {}, litter is {}", id, service.getAuth(), service.getLitter());
         if (id != null) {
-            if (id == 0)
-                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, auth);
-            if (id < 0)
-                throw new ResponseStatusException(HttpStatus.FORBIDDEN, litter);
-            if (id < 200)
+            if (id == 0) {
+                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, service.getAuth());
+            }
+            if (id < 0) {
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN, service.getLitter());
+            }
+            if (id < 200) {
                 return new ResponseEntity(service.getById(id), HttpStatus.OK);
-            else {
+            } else {
                 return new ResponseEntity(service.getById(id), HttpStatus.ACCEPTED);
             }
         }
@@ -187,6 +183,21 @@ public class ExampleController {
         localCount.set(localCount.get() + 1);
         gcount++;
         return "localCount:" + localCount.get() + " - gCount:" + gcount;
+    }
+
+    @ApiOperation(value = "测试异常")
+    @ApiResponses(
+            {
+                    @ApiResponse(code = 204, message = "成功"),
+                    @ApiResponse(code = 205, message = "成功"),
+                    @ApiResponse(code = 401, message = "未认证"),
+                    @ApiResponse(code = 403, message = "禁止的"),
+                    @ApiResponse(code = 405, message = "失败"),
+            }
+    )
+    @RequestMapping(value = "/zero", method = RequestMethod.GET)
+    public String zero() {
+        return String.valueOf(1 / 0);
     }
 }
 

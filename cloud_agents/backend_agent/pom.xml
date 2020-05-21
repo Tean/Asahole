@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud_agents</artifactId>
-        <groupId>com.netteans.cloud</groupId>
+        <groupId>com.netteans.hole</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,20 +13,19 @@
 
     <properties>
         <discovery.consul.module.version>1.0-SNAPSHOT</discovery.consul.module.version>
-        <service.controller.version>1.0-SNAPSHOT</service.controller.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.netteans.cloud</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>cloud_module_consul</artifactId>
             <version>${discovery.consul.module.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.netteans</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>service_controller</artifactId>
-            <version>${service.controller.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>
@@ -51,22 +50,18 @@
         </dependency>
 
         <dependency>
-            <groupId>com.netteans.common</groupId>
+            <groupId>com.netteans.hole</groupId>
             <artifactId>test_module</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.parent.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
-            <version>2.1.0.RELEASE</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.6.RELEASE</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

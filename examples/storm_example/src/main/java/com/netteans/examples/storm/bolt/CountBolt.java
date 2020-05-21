@@ -25,8 +25,8 @@ public class CountBolt extends BaseBasicBolt {
             countMap.put(word, count + 1);
         }
 
-        for (String wkey : countMap.keySet()) {
-            logger.info("{} : {}", wkey, countMap.get(wkey));
+        for (Map.Entry entry : countMap.entrySet()) {
+            logger.info("{} : {}", entry.getKey(), entry.getValue());
         }
     }
 
@@ -37,8 +37,8 @@ public class CountBolt extends BaseBasicBolt {
     @Override
     public void cleanup() {
         super.cleanup();
-        for (String wkey : countMap.keySet()) {
-            logger.info("{} : {}", wkey, countMap.get(wkey));
+        for (Map.Entry entry : countMap.entrySet()) {
+            logger.info("{} : {}", entry.getKey(), entry.getValue());
         }
     }
 }

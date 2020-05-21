@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class AfterBootStrap implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(AfterBootStrap.class);
 
+    @Override
     public void run(String... args) throws Exception {
         logger.info("{}","server ready");
         logger.debug("{}", args);
