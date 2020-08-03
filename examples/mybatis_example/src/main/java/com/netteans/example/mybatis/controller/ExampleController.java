@@ -1,7 +1,7 @@
-package com.netteans.examples.mybatis.controller;
+package com.netteans.example.mybatis.controller;
 
-import com.netteans.examples.mybatis.dao.model.ExampleUser;
-import com.netteans.examples.mybatis.service.ExampleService;
+import com.netteans.example.mybatis.dao.model.ExampleUser;
+import com.netteans.example.mybatis.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

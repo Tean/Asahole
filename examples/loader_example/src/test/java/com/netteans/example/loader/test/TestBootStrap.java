@@ -1,6 +1,6 @@
-package com.netteans.examples.loader.test;
+package com.netteans.example.loader.test;
 
-import com.netteans.examples.loader.ExampleClassLoader;
+import com.netteans.example.loader.ExampleClassLoader;
 import org.junit.Test;
 
 public class TestBootStrap {

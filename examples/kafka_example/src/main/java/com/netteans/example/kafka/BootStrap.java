@@ -1,4 +1,4 @@
-package com.netteans.examples.kafka;
+package com.netteans.example.kafka;
 
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;

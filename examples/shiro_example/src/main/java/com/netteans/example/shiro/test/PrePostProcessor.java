@@ -1,4 +1,4 @@
-package com.netteans.examples.shiro.test;
+package com.netteans.example.shiro.test;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

@@ -1,7 +1,7 @@
-package com.netteans.examples.mybatis.dao.mapper;
+package com.netteans.example.mybatis.dao.mapper;
 
-import com.netteans.examples.mybatis.dao.model.ExampleUser;
-import com.netteans.examples.mybatis.dao.model.ExampleUserExample;
+import com.netteans.example.mybatis.dao.model.ExampleUser;
+import com.netteans.example.mybatis.dao.model.ExampleUserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -83,7 +83,7 @@ public interface ExampleUserMapper {
         "from example_user",
         "where id = #{id,jdbcType=INTEGER}"
     })
-    @ResultMap("com.netteans.examples.mybatis.dao.mapper.ExampleUserMapper.BaseResultMap")
+    @ResultMap("com.netteans.example.mybatis.dao.mapper.ExampleUserMapper.BaseResultMap")
     ExampleUser selectByPrimaryKey(Integer id);
 
     /**

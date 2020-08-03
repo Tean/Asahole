@@ -1,4 +1,4 @@
-package com.netteans.examples.storm.spout;
+package com.netteans.example.storm.spout;
 
 import org.apache.storm.spout.SpoutOutputCollector;
 import org.apache.storm.task.TopologyContext;

@@ -1,4 +1,4 @@
-package com.netteans.examples.multiple.ds;
+package com.netteans.example.multiple.ds;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

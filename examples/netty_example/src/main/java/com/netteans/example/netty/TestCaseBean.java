@@ -1,4 +1,4 @@
-package com.netteans.examples.netty;
+package com.netteans.example.netty;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

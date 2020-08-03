@@ -1,4 +1,4 @@
-package com.netteans.examples.elk;
+package com.netteans.example.elk;
 
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;

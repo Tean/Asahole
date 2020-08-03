@@ -1,4 +1,4 @@
-package com.netteans.examples.webflux.entity;
+package com.netteans.example.webflux.entity;
 
 public class ExpPub {
 }

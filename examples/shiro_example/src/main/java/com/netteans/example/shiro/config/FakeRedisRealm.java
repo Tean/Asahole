@@ -1,6 +1,6 @@
-package com.netteans.examples.shiro.config;
+package com.netteans.example.shiro.config;
 
-import com.netteans.examples.shiro.demo.FedisExample;
+import com.netteans.example.shiro.demo.FedisExample;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

@@ -13,12 +13,9 @@
 .vscode/
 *.factorypath
 
-target/
-*/target/
-log/
-*/log/
+**/target/
+**/log/
 src/test/java/com/netteans/service/
-tmp/
-*/tmp/
-logs/
-*/logs/
+**/tmp/
+**/logs/
+**/*.class

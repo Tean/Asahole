@@ -1,4 +1,4 @@
-package com.netteans.examples.shiro.test;
+package com.netteans.example.shiro.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

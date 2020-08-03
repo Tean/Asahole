@@ -1,7 +1,7 @@
-package com.netteans.examples.shiro.test;
+package com.netteans.example.shiro.test;
 
-import com.netteans.examples.shiro.ILambda;
-import com.netteans.examples.shiro.VoidLambda;
+import com.netteans.example.shiro.ILambda;
+import com.netteans.example.shiro.VoidLambda;
 import org.junit.Test;
 import sun.misc.ProxyGenerator;
 

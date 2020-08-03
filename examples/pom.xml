@@ -34,6 +34,7 @@
         <module>webflux_example</module>
         <module>structure_example</module>
         <module>aop_example</module>
+        <module>rabbitmq_example</module>
     </modules>
 
     <dependencyManagement>

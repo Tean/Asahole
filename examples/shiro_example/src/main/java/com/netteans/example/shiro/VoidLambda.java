@@ -1,4 +1,4 @@
-package com.netteans.examples.shiro;
+package com.netteans.example.shiro;
 
 import java.io.Serializable;
 

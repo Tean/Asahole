@@ -1,4 +1,4 @@
-import com.netteans.examples.dubbo.test.interfaces.only.EmbeddedZooKeeper;
+import com.netteans.example.dubbo.test.interfaces.only.EmbeddedZooKeeper;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;

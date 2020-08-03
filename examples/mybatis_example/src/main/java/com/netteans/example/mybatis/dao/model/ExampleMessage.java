@@ -1,4 +1,4 @@
-package com.netteans.examples.mybatis.dao.model;
+package com.netteans.example.mybatis.dao.model;
 
 public class ExampleMessage {
     /**

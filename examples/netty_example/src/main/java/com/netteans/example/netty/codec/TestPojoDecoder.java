@@ -1,6 +1,6 @@
-package com.netteans.examples.netty.codec;
+package com.netteans.example.netty.codec;
 
-import com.netteans.examples.netty.TestCaseBean;
+import com.netteans.example.netty.TestCaseBean;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;

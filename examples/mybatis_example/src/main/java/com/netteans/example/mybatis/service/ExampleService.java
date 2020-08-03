@@ -1,9 +1,9 @@
-package com.netteans.examples.mybatis.service;
+package com.netteans.example.mybatis.service;
 
-import com.netteans.examples.mybatis.dao.mapper.ExampleMessageMapperExt;
-import com.netteans.examples.mybatis.dao.mapper.ExampleUserMapper;
-import com.netteans.examples.mybatis.dao.model.ExampleMessage;
-import com.netteans.examples.mybatis.dao.model.ExampleUser;
+import com.netteans.example.mybatis.dao.mapper.ExampleMessageMapperExt;
+import com.netteans.example.mybatis.dao.mapper.ExampleUserMapper;
+import com.netteans.example.mybatis.dao.model.ExampleMessage;
+import com.netteans.example.mybatis.dao.model.ExampleUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

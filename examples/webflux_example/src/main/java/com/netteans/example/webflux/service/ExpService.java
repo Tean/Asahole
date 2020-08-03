@@ -1,6 +1,6 @@
-package com.netteans.examples.webflux.service;
+package com.netteans.example.webflux.service;
 
-import com.netteans.examples.webflux.entity.ExpPub;
+import com.netteans.example.webflux.entity.ExpPub;
 import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

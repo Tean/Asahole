@@ -1,4 +1,4 @@
-package com.netteans.examples.starter;
+package com.netteans.example.starter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

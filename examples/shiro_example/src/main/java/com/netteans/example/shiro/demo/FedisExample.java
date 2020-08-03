@@ -1,4 +1,4 @@
-package com.netteans.examples.shiro.demo;
+package com.netteans.example.shiro.demo;
 
 import org.springframework.stereotype.Repository;
 

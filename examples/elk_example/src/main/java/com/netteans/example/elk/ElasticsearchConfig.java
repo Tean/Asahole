@@ -1,4 +1,4 @@
-package com.netteans.examples.elk;
+package com.netteans.example.elk;
 
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.Node;

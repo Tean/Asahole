@@ -1,7 +1,7 @@
-package com.netteans.examples.storm;
+package com.netteans.example.storm;
 
-import com.netteans.examples.storm.bolt.CountBolt;
-import com.netteans.examples.storm.spout.TestSpout;
+import com.netteans.example.storm.bolt.CountBolt;
+import com.netteans.example.storm.spout.TestSpout;
 import org.apache.storm.Config;
 import org.apache.storm.LocalCluster;
 import org.apache.storm.StormSubmitter;

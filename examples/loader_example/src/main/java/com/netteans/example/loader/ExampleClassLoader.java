@@ -1,4 +1,4 @@
-package com.netteans.examples.loader;
+package com.netteans.example.loader;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

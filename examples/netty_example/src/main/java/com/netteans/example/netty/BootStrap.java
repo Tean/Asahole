@@ -1,8 +1,9 @@
-package com.netteans.examples.netty;
+package com.netteans.example.netty;
 
-import com.netteans.examples.netty.codec.EchoHandler;
-import com.netteans.examples.netty.codec.TestPojoDecoder;
-import com.netteans.examples.netty.codec.TestPojoEncoder;
+import com.netteans.example.netty.TestCaseBean;
+import com.netteans.example.netty.codec.EchoHandler;
+import com.netteans.example.netty.codec.TestPojoDecoder;
+import com.netteans.example.netty.codec.TestPojoEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;

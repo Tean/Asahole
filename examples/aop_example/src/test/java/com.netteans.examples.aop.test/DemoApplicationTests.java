@@ -1,6 +1,6 @@
-package com.netteans.examples.aop.test;
+package com.netteans.example.aop.test;
 
-import com.netteans.examples.aop.BootStrap;
+import com.netteans.example.aop.BootStrap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
