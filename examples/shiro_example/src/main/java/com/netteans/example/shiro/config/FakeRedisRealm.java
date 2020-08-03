@@ -1,16 +1,10 @@
 package com.netteans.example.shiro.config;
 
 import com.netteans.example.shiro.demo.FedisExample;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthenticatingRealm;
-import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class FakeRedisRealm extends AuthenticatingRealm {
 

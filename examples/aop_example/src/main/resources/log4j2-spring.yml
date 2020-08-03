@@ -1,0 +1,243 @@
+configuration:
+#  CustomLevels:
+#    CustomLevel:
+#      name: "HISTORYLEVEL"
+#      intLevel: "350"
+  status: "OFF"
+  monitorInterval: "5"
+  appenders:
+    Console:
+      - name: "Console"
+        target: "SYSTEM_OUT"
+        #      JsonLayout:
+        #        compact: "true"
+        #        locationInfo: "true"
+        #        complete: "false"
+        #        eventEol: "true"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{HH:mm:ss.SSS} [%t] %highlight{%-5level}{FATAL=red, ERROR=red, WARN=yellow, INFO=blue, DEBUG=magenta, TRACE=green} %style{%c{10}}{Reverse, green} %style{[}{cyan}%style{%L}{yellow}%style{]}{cyan} %style{%M}{green} - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "TRACE"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "DEBUG"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "INFO"
+              onMatch: "ACCEPT"
+              onMismatch: "DENY"
+            - level: "WARN"
+              onMatch: "ACCEPT"
+              onMismatch: "ACCEPT"
+            - level: "ERROR"
+              onMatch: "ACCEPT"
+              onMismatch: "ACCEPT"
+            - level: "FATAL"
+              onMatch: "ACCEPT"
+              onMismatch: "ACCEPT"
+#            - level: "HISTORYLEVEL"
+#              onMatch: "ACCEPT"
+#              onMismatch: "NEUTRAL"
+    RollingRandomAccessFile:
+      - name: "DebugFile"
+        filename: "logs/debug/debug.log"
+        filepattern: "logs/debug/$${date:yyyy-MM}/log.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "TRACE"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "DEBUG"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "INFO"
+              onMatch: "DENY" #不匹配INFO以及以上的，原则上下面都不需要了
+              onMismatch: "NEUTRAL"
+            - level: "WARN"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+            - level: "ERROR"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+            - level: "FATAL"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+      - name: "InfoFile"
+        filename: "logs/info/info.log"
+        filepattern: "logs/info/$${date:yyyy-MM}/info.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "TRACE"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "DEBUG"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "INFO"
+              onMatch: "NEUTRAL"
+              onMismatch: "DENY"
+            - level: "WARN"
+              onMatch: "DENY" #不匹配WARN以及以上的，原则上下面都不需要了
+              onMismatch: "NEUTRAL"
+            - level: "ERROR"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+            - level: "FATAL"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+      - name: "WarnFile"
+        filename: "logs/warn/warn.log"
+        filepattern: "logs/warn/$${date:yyyy-MM}/warn.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+        Filters:
+          ThresholdFilter:
+            - level: "WARN"
+              onMatch: "NEUTRAL" #交由下一个level控制，如果下一个
+              onMismatch: "DENY"
+            - level: "ERROR"
+              onMatch: "DENY"
+              onMismatch: "NEUTRAL" #交由上一个level控制
+      - name: "ErrorFile"
+        filename: "logs/error/error.log"
+        filepattern: "logs/error/$${date:yyyy-MM}/error.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "ERROR"
+              onMatch: "ACCEPT"
+              onMismatch: "DENY"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+      - name: "HistoryFile"
+        filename: "logs/history/history.log"
+        filepattern: "logs/history/$${date:yyyy-MM}/history.%d{yyyyMMdd}.-%i.gz"
+        PatternLayout:
+          charset: "UTF-8"
+          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "TRACE"
+              onMatch: "NEUTRAL"
+              onMismatch: "NEUTRAL"
+            - level: "DEBUG"
+              onMatch: "ACCEPT"
+              onMismatch: "DENY"
+            - level: "INFO"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "WARN"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "ERROR"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+      - name: "scheduler"
+        filename: "logs/scheduler/scheduler.log.json"
+        filepattern: "logs/scheduler/$${date:yyyy-MM}/scheduler.%d{yyyyMMdd}.-%i.json.gz"
+        JsonLayout:
+          compact: "true"
+          locationInfo: "true"
+          complete: "false"
+          eventEol: "true"
+        #        PatternLayout:
+        #          charset: "UTF-8"
+        #          pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %c{10}[%L] %M - %msg%n"
+        Filters:
+          ThresholdFilter:
+            - level: "TRACE"
+              onMatch: "NEUTRAL"
+              onMismatch: "NEUTRAL"
+            - level: "DEBUG"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "INFO"
+              onMatch: "ACCEPT"
+              onMismatch: "DENY"
+            - level: "WARN"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+            - level: "ERROR"
+              onMatch: "ACCEPT"
+              onMismatch: "NEUTRAL"
+        Policies:
+          OnStartupTriggeringPolicy: {}
+          SizeBasedTriggeringPolicy:
+            size: "4 MB"
+          TimeBasedTriggeringPolicy: {}
+  #    NoSql:
+  #      name: "mongodb"
+  #      bufferSize: "10"
+  #      MongoDb:
+  #        databaseName: "logs"
+  #        collectionName: "test"
+  #        server: "localhost"
+  #        port: "27017"
+  #      Filters:
+  #        ThresholdFilter:
+  #        -
+  #          level: "DEBUG"
+  #          onMatch: "ACCEPT"
+  #          onMismatch: "NEUTRAL"
+  #        -
+  #          level: "INFO"
+  #          onMatch: "ACCEPT"
+  #          onMismatch: "NEUTRAL"
+  #        -
+  #          level: "WARN"
+  #          onMatch: "ACCEPT"
+  #          onMismatch: "NEUTRAL"
+  #        -
+  #          level: "ERROR"
+  #          onMatch: "ACCEPT"
+  #          onMismatch: "NEUTRAL"
+  loggers:
+    root:
+      level: "all"
+      AppenderRef:
+        - ref: "Console"
+        - ref: "DebugFile"
+        - ref: "InfoFile"
+        - ref: "WarnFile"
+        - ref: "ErrorFile"
+    logger:
+      - name: "history"
+        AppenderRef:
+          - ref: "HistoryFile"
+      - name: "scheduler"
+        AppenderRef:
+          - ref: "scheduler"

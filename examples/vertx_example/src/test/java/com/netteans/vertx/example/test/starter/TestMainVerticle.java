@@ -1,6 +1,6 @@
 package com.netteans.vertx.example.test.starter;
 
-import com.netteans.vertx.example.starter.MainVerticle;
+import com.netteans.examples.vertx.starter.MainVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.Timeout;
 import io.vertx.junit5.VertxExtension;
